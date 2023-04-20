@@ -13,5 +13,6 @@ public class Unidad {
     private int potenciaAtaque;
     private int puntosAnulado;
     private Coordenada posicion;
+    private Ser[] seresUnidad;
 
 }
