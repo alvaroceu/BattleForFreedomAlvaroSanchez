@@ -1,4 +1,7 @@
-package battleForFreedom.modelo;
+package battleForFreedom.modelo.tropas.unidades;
+
+import battleForFreedom.modelo.funcionamiento.Coordenada;
+import battleForFreedom.modelo.tropas.seres.Ser;
 
 /**
  *

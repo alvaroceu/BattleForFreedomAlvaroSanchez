@@ -1,4 +1,6 @@
-package battleForFreedom.modelo;
+package battleForFreedom.modelo.tropas.seres;
+
+import battleForFreedom.modelo.funcionamiento.Raza;
 
 /**
  *

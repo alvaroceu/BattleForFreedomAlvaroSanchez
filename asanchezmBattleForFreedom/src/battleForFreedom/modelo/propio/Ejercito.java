@@ -1,5 +1,6 @@
-package battleForFreedom.modelo;
+package battleForFreedom.modelo.propio;
 
+import battleForFreedom.modelo.tropas.unidades.Unidad;
 import java.util.*;
 
 /**

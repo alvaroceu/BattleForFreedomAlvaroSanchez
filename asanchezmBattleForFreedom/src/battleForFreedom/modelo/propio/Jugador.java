@@ -1,4 +1,6 @@
-package battleForFreedom.modelo;
+package battleForFreedom.modelo.propio;
+
+import battleForFreedom.modelo.propio.Equipo;
 
 /**
  *

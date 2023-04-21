@@ -1,4 +1,4 @@
-package battleForFreedom.modelo;
+package battleForFreedom.modelo.escenarios;
 
 /**
  *
