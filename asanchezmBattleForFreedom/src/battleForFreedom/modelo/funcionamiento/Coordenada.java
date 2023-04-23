@@ -20,4 +20,9 @@ public class Coordenada {
         this.x = r.nextInt(maximo);
         this.y = r.nextInt(maximo);
     }
+
+    @Override
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
 }
