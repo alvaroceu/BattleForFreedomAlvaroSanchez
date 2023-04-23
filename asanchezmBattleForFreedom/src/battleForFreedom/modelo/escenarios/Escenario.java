@@ -10,11 +10,11 @@ public abstract class Escenario {
     private int[][] dimensionEscenario;
 
     /*
-    *  Constructor completo, sera usado por las clases hijas
+    *  Constructor, sera usado por las clases hijas
      */
-    public Escenario(int puntosIniciales, int[][] dimension) {
-        this.dimensionEscenario = dimension;
+    public Escenario(int puntosIniciales, int maximo) {
         this.puntosIniciales = puntosIniciales;
+        this.dimensionEscenario = new int[maximo][maximo];
     }
 
 }
