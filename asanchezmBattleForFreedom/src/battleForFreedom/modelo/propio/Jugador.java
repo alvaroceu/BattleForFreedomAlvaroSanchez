@@ -18,4 +18,12 @@ public class Jugador {
         this.equipo = equipo;
     }
 
+    /*
+    *  Metodo toString para representar la clase Jugador
+     */
+    @Override
+    public String toString() {
+        return "Jugador: " + this.ID;
+    }
+
 }

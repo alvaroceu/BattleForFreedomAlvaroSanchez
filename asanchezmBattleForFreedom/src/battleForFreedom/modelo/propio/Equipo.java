@@ -20,4 +20,12 @@ public class Equipo {
         this.puntosDisponibles = 0;
     }
 
+    /*
+    *  Metodo toString para representar la clase Jugador
+     */
+    @Override
+    public String toString() {
+        return "Puntos Disponibles: " + this.puntosDisponibles
+                + "\n" + this.ejercito;
+    }
 }

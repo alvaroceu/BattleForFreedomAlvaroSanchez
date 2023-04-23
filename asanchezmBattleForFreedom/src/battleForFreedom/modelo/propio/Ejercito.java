@@ -19,4 +19,12 @@ public class Ejercito {
         this.unidades = new ArrayList();
     }
 
+    /*
+    *  Metodo toString para representar la clase Jugador
+     */
+    @Override
+    public String toString() {
+        return "Ejercito:\n " + this.unidades;
+    }
+
 }
