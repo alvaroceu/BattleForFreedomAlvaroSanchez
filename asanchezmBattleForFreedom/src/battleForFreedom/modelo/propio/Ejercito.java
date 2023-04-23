@@ -20,7 +20,7 @@ public class Ejercito {
     }
 
     /*
-    *  Metodo toString para representar la clase Jugador
+    *  Metodo toString para representar la clase Ejercito
      */
     @Override
     public String toString() {

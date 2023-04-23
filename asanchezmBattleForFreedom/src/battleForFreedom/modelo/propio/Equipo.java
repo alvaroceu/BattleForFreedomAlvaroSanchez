@@ -21,7 +21,7 @@ public class Equipo {
     }
 
     /*
-    *  Metodo toString para representar la clase Jugador
+    *  Metodo toString para representar la clase Equipo
      */
     @Override
     public String toString() {
