@@ -16,12 +16,23 @@ public class Coordenada {
      * que recibe como parametro.
      *
      * @param maximo Rngo maximo
-    *
+     *
      */
     public Coordenada(int maximo) {
         Random r = new Random();
         this.x = r.nextInt(maximo);
         this.y = r.nextInt(maximo);
+    }
+
+    /**
+     * Constructor que genera una coordenada con los valores indicados.
+     *
+     * @param x Valor del parametro x.
+     * @param y Valor del parametro y.
+     */
+    public Coordenada(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     /**
