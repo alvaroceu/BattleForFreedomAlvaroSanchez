@@ -10,18 +10,20 @@ public class Equipo {
     private int puntosDisponibles;
     //Falta implementar: atributo "centroDeMando"
 
-    /*
-    *  Constructor que siempre recibe un equipo como parametro.
-    *  Inicializa los puntos a 0, y se establecen posteriormente
-    *  en funcion del escenario escogido.
+    /**
+     * Constructor de objetos de la clase Ejercito.
+     *
+     * @param ejercito Ejercito que contiene a las unidades del jugador.
      */
     public Equipo(Ejercito ejercito) {
         this.ejercito = ejercito;
         this.puntosDisponibles = 0;
     }
 
-    /*
-    *  Metodo toString para representar la clase Equipo
+    /**
+     * Representación de la clase equipo.
+     *
+     * @return Cadena indicando los puntos disponibles y las unidades poseídas.
      */
     @Override
     public String toString() {

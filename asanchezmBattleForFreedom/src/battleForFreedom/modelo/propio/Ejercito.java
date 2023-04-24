@@ -11,16 +11,18 @@ public class Ejercito {
 
     private ArrayList<Unidad> unidades;
 
-    /*
-    *  Constructor estandar. Crea una lista de unidades vacía,
-    *  que se ampliará al comprar unidades.
+    /**
+     * Constructor de objetos de la clase Ejercito.Crea una lista vacía de
+     * unidades.Es necesario comprar unidades para añadirlas a la lista.
      */
     public Ejercito() {
         this.unidades = new ArrayList();
     }
 
-    /*
-    *  Metodo toString para representar la clase Ejercito
+    /**
+     * Representacion de la clase Ejercito.
+     *
+     * @return Cadena que indica las unidades poseídas.
      */
     @Override
     public String toString() {
