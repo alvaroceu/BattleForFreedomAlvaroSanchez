@@ -21,8 +21,19 @@ public abstract class Unidad {
     private Ser[] seresUnidad;
     private Boolean unidadAnulada;
 
-    /*
-    *  Constructor completo, sera utilizado por las clases hijas
+    /**
+     * Constructor de objetos de la clase Unidad
+     *
+     * @param costeUnidad Puntos necesarios para comprar la unidad
+     * @param energiaAtaque Energia necesaria para realizar los ataques
+     * @param energiaDefensa Energia necesaria para recibir los ataques
+     * @param energiaMovimiento Energia necesaria para mover la unidad
+     * @param potenciaAtaque Cantidad que se resta de energia de ataque y
+     * defensa
+     * @param puntosAnulado Puntos que recibe el jugador que elimina la unidad
+     * @param posicion Coordenadas de la unidad en el escenario
+     * @param numeroSeres Numero de seres que controlan la unidad
+     *
      */
     public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, Coordenada posicion, int numeroSeres) {
         this.costeUnidad = costeUnidad;
@@ -36,10 +47,31 @@ public abstract class Unidad {
         this.unidadAnulada = false;
     }
 
+    /**
+     * Este metodo permite cambiar el valor de unidadAnulada.
+     *
+     * @param unidadAnulada Nuevo valor (true,false)
+     *
+     */
     public void setUnidadAnulada(Boolean unidadAnulada) {
         this.unidadAnulada = unidadAnulada;
     }
 
+    /**
+     * Este metodo permite a una unidad realizar un ataque.En caso de acertar el
+     * ataque, se reduce la enería de ataque de la unidad atacante, así cómo la
+     * energía de defensa de la defensora, o bien la resistencia de los seres en
+     * caso de haberse agotado la defensa de la unidad.
+     *
+     * @param ataque Coordenada a la que se dirige el ataque
+     * @param escenario Escenario empleado en la partida actual
+     *
+     * @throws AtaqueException Siempre que falle el ataque por cualquier
+     * motivo(rango, energía, posición vacía)
+     *
+     * @return Puntos obtenidos en caso de haberse derrotado seres o la unidad
+     *
+     */
     public int atacar(Coordenada ataque, Escenario escenario) throws AtaqueException {
         int puntosGanados = 0;
         if (!enRangoAtaque(ataque)) {
@@ -98,5 +130,14 @@ public abstract class Unidad {
         return puntosGanados;
     }
 
+    /**
+     * Este método determina si una coordenada se encuentra dentro del rango de
+     * ataque de una unidad o no.
+     *
+     * @param coordenada Coordenada a determinar.
+     *
+     * @return True si esta en rango, false si no lo esta.
+     *
+     */
     public abstract Boolean enRangoAtaque(Coordenada coordenada);
 }
