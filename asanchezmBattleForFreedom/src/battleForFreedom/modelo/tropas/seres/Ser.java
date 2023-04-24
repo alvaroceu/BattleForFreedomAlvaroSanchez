@@ -10,8 +10,9 @@ public abstract class Ser {
 
     private int costeSer;
     private Raza raza;
-    private int resistenciaAtaques;
+    private float resistenciaAtaques;
     private int puntosAnulado;
+    private Boolean serAnulado;
 
     /*
     *  Constructor completo, se usara para las clases hijas de 'Ser'
@@ -21,5 +22,23 @@ public abstract class Ser {
         this.raza = raza;
         this.resistenciaAtaques = resistencia;
         this.puntosAnulado = puntos;
+        this.serAnulado = false;
     }
+
+    public void setResistenciaAtaques(float resistenciaAtaques) {
+        this.resistenciaAtaques = resistenciaAtaques;
+    }
+
+    public float getResistenciaAtaques() {
+        return resistenciaAtaques;
+    }
+
+    public void setSerAnulado(Boolean serAnulado) {
+        this.serAnulado = serAnulado;
+    }
+
+    public int getPuntosAnulado() {
+        return puntosAnulado;
+    }
+
 }

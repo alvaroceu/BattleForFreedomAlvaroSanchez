@@ -21,6 +21,14 @@ public class Coordenada {
         this.y = r.nextInt(maximo);
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     @Override
     public String toString() {
         return "(" + x + "," + y + ")";
