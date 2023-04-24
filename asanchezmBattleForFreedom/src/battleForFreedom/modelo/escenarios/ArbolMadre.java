@@ -6,12 +6,18 @@ package battleForFreedom.modelo.escenarios;
  */
 public class ArbolMadre extends Escenario {
 
+    /**
+     * Constructor de el Escenario: Arbol Madre.Establece los puntos iniciales a
+     * 45000, y tiene una dimensiond e 300x300.
+     */
     public ArbolMadre() {
         super(45000, 299);
     }
 
-    /*
-    *  Metodo toString
+    /**
+     * Representacion del Escenario
+     *
+     * @return Nombre del escenario: Arbol Madre
      */
     @Override
     public String toString() {

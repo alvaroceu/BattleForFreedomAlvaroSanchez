@@ -6,12 +6,18 @@ package battleForFreedom.modelo.escenarios;
  */
 public class JardinesColgantes extends Escenario {
 
+    /**
+     * Constructor de el Escenario: Jardines Colgantes.Establece los puntos
+     * iniciales a 20000, y tiene una dimensiond e 200x200.
+     */
     public JardinesColgantes() {
         super(20000, 199);
     }
 
-    /*
-    *  Metodo toString
+    /**
+     * Representacion del Escenario
+     *
+     * @return Nombre del escenario: Jardines Colgantes
      */
     @Override
     public String toString() {
