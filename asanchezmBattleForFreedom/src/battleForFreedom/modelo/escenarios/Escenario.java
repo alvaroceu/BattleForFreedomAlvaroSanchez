@@ -11,16 +11,29 @@ public abstract class Escenario {
 
     private int puntosIniciales;
     private Unidad[][] dimensionEscenario;
+    private int posicionMaxima;
 
     /**
      * Constructor de objetos de clase Escenario
      *
      * @param puntosIniciales Puntos que se otorgan a los jugadores al comienzo
-     * @param maximo Valor máximo de los parametros de las coordenadas (x e y)
+     * @param posicionMaxima Valor máximo de los parametros de las coordenadas
+     * (x e y)
      */
-    public Escenario(int puntosIniciales, int maximo) {
+    public Escenario(int puntosIniciales, int posicionMaxima) {
         this.puntosIniciales = puntosIniciales;
-        this.dimensionEscenario = new Unidad[maximo][maximo];
+        this.dimensionEscenario = new Unidad[posicionMaxima][posicionMaxima];
+        this.posicionMaxima = posicionMaxima;
+    }
+
+    /**
+     * Permite obtener el valor maximo de los parametros (x e y) de la dimension
+     * del escenario.
+     *
+     * @return Valor maximo
+     */
+    public int getPosicionMaxima() {
+        return this.posicionMaxima;
     }
 
     /**
