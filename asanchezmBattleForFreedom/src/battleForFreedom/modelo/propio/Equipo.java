@@ -21,6 +21,33 @@ public class Equipo {
     }
 
     /**
+     * Permite obtener el Ejercito de un Jugador
+     *
+     * @return Ejercito
+     */
+    public Ejercito getEjercito() {
+        return ejercito;
+    }
+
+    /**
+     * Permite obtener los puntos disponibles de un Jugador
+     *
+     * @return Puntos disponibles para usar
+     */
+    public int getPuntosDisponibles() {
+        return puntosDisponibles;
+    }
+
+    /**
+     * Permite modificar los puntos disponibles de un jugador
+     *
+     * @param puntosDisponibles Nuevo valor de los puntos disponibles
+     */
+    public void setPuntosDisponibles(int puntosDisponibles) {
+        this.puntosDisponibles = puntosDisponibles;
+    }
+
+    /**
      * Representación de la clase equipo.
      *
      * @return Cadena indicando los puntos disponibles y las unidades poseídas.

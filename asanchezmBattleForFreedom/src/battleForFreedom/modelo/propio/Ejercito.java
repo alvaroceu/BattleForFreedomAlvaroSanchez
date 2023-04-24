@@ -20,6 +20,15 @@ public class Ejercito {
     }
 
     /**
+     * Permite obtener la lista de Unidades del ejército de cada equipo.
+     *
+     * @return Lista de unidades
+     */
+    public ArrayList<Unidad> getUnidades() {
+        return unidades;
+    }
+
+    /**
      * Representacion de la clase Ejercito.
      *
      * @return Cadena que indica las unidades poseídas.
