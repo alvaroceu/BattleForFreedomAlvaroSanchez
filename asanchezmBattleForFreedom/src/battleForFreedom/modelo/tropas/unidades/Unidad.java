@@ -48,6 +48,15 @@ public abstract class Unidad {
     }
 
     /**
+     * Este metodo permite obtener la posicion actual de una unidad
+     *
+     * @return Posicion de la unidad
+     */
+    public Coordenada getPosicion() {
+        return this.posicion;
+    }
+
+    /**
      * Este metodo permite cambiar el valor de unidadAnulada.
      *
      * @param unidadAnulada Nuevo valor (true,false)
@@ -132,7 +141,9 @@ public abstract class Unidad {
 
     /**
      * Este método determina si una coordenada se encuentra dentro del rango de
-     * ataque de una unidad o no.
+     * ataque de una unidad o no.En su interior aparece la funcion
+     * comprobarRango que es la que indica el rango concreto de la unidad que
+     * llame al método.
      *
      * @param coordenada Coordenada a determinar.
      *
@@ -140,4 +151,26 @@ public abstract class Unidad {
      *
      */
     public abstract Boolean enRangoAtaque(Coordenada coordenada);
+
+    /**
+     * Este método es un método auxiliar para el método enRangoAtaque, y es el
+     * que determina si una coordenada dada se encuentra o no en el rango de
+     * ataque de dicha unidad
+     *
+     * @param coordenada Coordenada a determinar
+     * @param maximoRango Distancia de alcance de los ataques de la unidad
+     * @return True si esta en rango, false si no lo esta
+     */
+    public Boolean comprobarRango(Coordenada coordenada, int maximoRango) {
+        Boolean rango = true;
+
+        if ((coordenada.getX() < (this.posicion.getX() - maximoRango))
+                || (coordenada.getX() > (this.posicion.getX() + maximoRango))
+                || (coordenada.getY() < (this.posicion.getY() - maximoRango))
+                || (coordenada.getY() > (this.posicion.getX() + maximoRango))) {
+
+        }
+
+        return rango;
+    }
 }
