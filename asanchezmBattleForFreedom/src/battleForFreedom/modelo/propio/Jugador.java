@@ -2,6 +2,7 @@ package battleForFreedom.modelo.propio;
 
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
+import battleForFreedom.modelo.tropas.unidades.Unidad;
 import static battleForFreedom.utiles.Utiles.leerEntero;
 
 /**
@@ -53,6 +54,31 @@ public class Jugador {
         y = y - 1;
 
         return new Coordenada(x, y);
+    }
+
+    /**
+     * Método que permite seleccionar una unidad del conjunto de unidades que
+     * posee el jugador que llama al método.Si se introduce un numero de unidad
+     * incorrecto, se debe introducri de nuevo uno correcto.
+     *
+     * @return Unidad elegida por el jugador
+     */
+    public Unidad elegirUnidad() {
+        int opcion = 0;
+        do {
+            int indice = 1;
+
+            for (Unidad u : this.equipo.getEjercito().getUnidades()) {
+                System.out.println(indice + "- " + u);
+            }
+            opcion = leerEntero("Escoge una unidad: ");
+
+            if ((opcion > this.equipo.getEjercito().getUnidades().size()) || (opcion < 1)) {
+                System.out.println("Se ha introducido un numero erroneo. Escoja de nuevo\n");
+            }
+
+        } while ((opcion > this.equipo.getEjercito().getUnidades().size()) || (opcion < 1));
+        return this.equipo.getEjercito().getUnidades().get(opcion - 1);
     }
 
     /**
