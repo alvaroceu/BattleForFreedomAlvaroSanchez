@@ -13,4 +13,11 @@ public class Omaticaya extends Ser {
         super(100, Raza.NAVI, 300, 100);
     }
 
+    /**
+     * Representación de Omaticaya
+     */
+    @Override
+    public String toString() {
+        return "Omaticaya";
+    }
 }

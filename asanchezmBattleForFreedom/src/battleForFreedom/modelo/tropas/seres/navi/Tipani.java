@@ -13,4 +13,11 @@ public class Tipani extends Ser {
         super(50, Raza.NAVI, 300, 250);
     }
 
+    /**
+     * Representación de Tipani
+     */
+    @Override
+    public String toString() {
+        return "Tipani";
+    }
 }

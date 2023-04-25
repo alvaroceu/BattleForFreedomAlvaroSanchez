@@ -13,4 +13,11 @@ public class Artillero extends Ser {
         super(50, Raza.HUMANO, 150, 100);
     }
 
+    /**
+     * Representación de Artillero
+     */
+    @Override
+    public String toString() {
+        return "Artillero";
+    }
 }
