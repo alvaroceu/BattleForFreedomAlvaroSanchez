@@ -13,10 +13,16 @@ public class AerospatialeSA2Samson extends UnidadRDA {
         super(2500, 1000, 1000, 500, 80, 1500, posicion, 2);
     }
 
-    //Falta por implementar
+    /**
+     * Este método determina si una coordenada dada se encuentra dentro del
+     * rango de ataque de la unidad de clase Aerospatiale SA-2 Samson.
+     *
+     * @param coordenada Coordenada dada
+     * @return True si esta dentro de rango, false si no lo está
+     */
     @Override
     public Boolean enRangoAtaque(Coordenada coordenada) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.comprobarRango(coordenada, 5);
     }
 
 }

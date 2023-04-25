@@ -13,10 +13,16 @@ public class TitanothereCabezamartillo extends UnidadNavi {
         super(1000, 11000, 11000, 4500, 300, 250, posicion, 1);
     }
 
-    //Falta por implementar
+    /**
+     * Este método determina si una coordenada dada se encuentra dentro del
+     * rango de ataque de la unidad de clase Titanothere Cabezamartillo.
+     *
+     * @param coordenada Coordenada dada
+     * @return True si esta dentro de rango, false si no lo está
+     */
     @Override
     public Boolean enRangoAtaque(Coordenada coordenada) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.comprobarRango(coordenada, 1);
     }
 
 }

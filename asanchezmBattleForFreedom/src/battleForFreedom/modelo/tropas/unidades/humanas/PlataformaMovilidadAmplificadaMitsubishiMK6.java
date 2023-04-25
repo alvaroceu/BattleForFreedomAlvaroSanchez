@@ -13,10 +13,17 @@ public class PlataformaMovilidadAmplificadaMitsubishiMK6 extends UnidadRDA {
         super(500, 1000, 0, 500, 20, 250, posicion, 1);
     }
 
-    //Falta por implementar
+    /**
+     * Este método determina si una coordenada dada se encuentra dentro del
+     * rango de ataque de la unidad de clase Plataforma de Movilidad Amplificada
+     * Mitsubishi MK-6.
+     *
+     * @param coordenada Coordenada dada
+     * @return True si esta dentro de rango, false si no lo está
+     */
     @Override
     public Boolean enRangoAtaque(Coordenada coordenada) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.comprobarRango(coordenada, 1);
     }
 
 }
