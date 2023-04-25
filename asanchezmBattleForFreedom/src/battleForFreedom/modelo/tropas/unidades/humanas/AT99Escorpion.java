@@ -25,4 +25,11 @@ public class AT99Escorpion extends UnidadRDA {
         return this.comprobarRango(coordenada, 10);
     }
 
+    /**
+     * Representación de AT-99 Escorpion
+     */
+    @Override
+    public String toString() {
+        return "AT-99 Escorpion";
+    }
 }

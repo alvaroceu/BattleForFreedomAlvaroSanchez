@@ -25,4 +25,11 @@ public class BansheeDeMontaña extends UnidadNavi {
         return this.comprobarRango(coordenada, 3);
     }
 
+    /**
+     * Representación de Banshee de Montaña
+     */
+    @Override
+    public String toString() {
+        return "Banshee de Montaña";
+    }
 }

@@ -25,4 +25,11 @@ public class AerospatialeSA2Samson extends UnidadRDA {
         return this.comprobarRango(coordenada, 5);
     }
 
+    /**
+     * Representación de Aerospatiale SA-2 Samson
+     */
+    @Override
+    public String toString() {
+        return "Aerospatiale SA-2 Samson";
+    }
 }

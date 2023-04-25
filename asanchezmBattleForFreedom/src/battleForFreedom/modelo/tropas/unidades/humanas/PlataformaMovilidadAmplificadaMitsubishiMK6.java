@@ -26,4 +26,11 @@ public class PlataformaMovilidadAmplificadaMitsubishiMK6 extends UnidadRDA {
         return this.comprobarRango(coordenada, 1);
     }
 
+    /**
+     * Representación de Plataforma de Movilidad Amplificada Mitsubishi MK-6
+     */
+    @Override
+    public String toString() {
+        return "Plataforma de Movilidad Amplificada Mitsubishi MK-6";
+    }
 }

@@ -25,4 +25,11 @@ public class Thanator extends UnidadNavi {
         return this.comprobarRango(coordenada, 5);
     }
 
+    /**
+     * Representación de Thanator
+     */
+    @Override
+    public String toString() {
+        return "Thanator";
+    }
 }

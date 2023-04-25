@@ -25,4 +25,11 @@ public class TitanothereCabezamartillo extends UnidadNavi {
         return this.comprobarRango(coordenada, 1);
     }
 
+    /**
+     * Representación de Titanothere Cabezamartillo
+     */
+    @Override
+    public String toString() {
+        return "Titanothere Cabezamartillo";
+    }
 }
