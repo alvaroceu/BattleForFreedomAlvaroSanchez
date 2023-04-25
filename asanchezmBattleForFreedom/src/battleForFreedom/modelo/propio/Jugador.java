@@ -90,7 +90,6 @@ public class Jugador {
      * anular unidades o seres en dicho ataque (en caso de conseguirlo).
      *
      * @param escenario Escenario de la partida actual
-     * @return Puntos finales (iniciales + ganados)
      */
     public void realizarAtaque(Escenario escenario) {
         Coordenada coordenadaAtaque = elegirCoordenada(escenario);
