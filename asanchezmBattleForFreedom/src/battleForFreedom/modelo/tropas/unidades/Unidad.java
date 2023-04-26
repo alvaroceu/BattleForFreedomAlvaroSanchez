@@ -68,9 +68,7 @@ public abstract class Unidad {
 
     /**
      * Este metodo permite a una unidad realizar un ataque.En caso de acertar el
-     * ataque, se reduce la enería de ataque de la unidad atacante, así cómo la
-     * energía de defensa de la defensora, o bien la resistencia de los seres en
-     * caso de haberse agotado la defensa de la unidad.
+     * ataque, se llama al método unidadRecibeAtaque.
      *
      * @param ataque Coordenada a la que se dirige el ataque
      * @param escenario Escenario empleado en la partida actual
@@ -99,43 +97,45 @@ public abstract class Unidad {
                 throw new AtaqueException("Se ha atacado la posicion " + ataque + " pero la unidad en dicha posicion ya estaba anulada");
             }
 
-            if (escenario.getUnidadEscenario(ataque).energiaDefensa >= this.potenciaAtaque) {
-                escenario.getUnidadEscenario(ataque).energiaDefensa = escenario.getUnidadEscenario(ataque).energiaDefensa - this.potenciaAtaque;
-                System.out.println("Se ha atacado la posicion " + ataque + " donde habia un(a)"); //falta implementar el tipo de unidad
-            } else {
-                escenario.getUnidadEscenario(ataque).energiaDefensa = 0;
-
-                float daño = (float) this.potenciaAtaque - escenario.getUnidadEscenario(ataque).energiaDefensa / escenario.getUnidadEscenario(ataque).seresUnidad.length;
-                escenario.getUnidadEscenario(ataque).energiaDefensa = 0;
-                int seresDerrotados = 0;
-
-                for (int numeroSer = escenario.getUnidadEscenario(ataque).seresUnidad.length - 1; numeroSer >= 0; numeroSer--) {
-                    float vidaSer = escenario.getUnidadEscenario(ataque).seresUnidad[numeroSer].getResistenciaAtaques();
-
-                    if (vidaSer > 0) {
-                        vidaSer = vidaSer - daño;
-                        escenario.getUnidadEscenario(ataque).seresUnidad[numeroSer].setResistenciaAtaques(vidaSer);
-
-                        if (vidaSer <= 0) {
-                            escenario.getUnidadEscenario(ataque).seresUnidad[numeroSer].setSerAnulado(true);
-                            puntosGanados = puntosGanados + escenario.getUnidadEscenario(ataque).seresUnidad[numeroSer].getPuntosAnulado();
-                        }
-                    }
-
-                    if (vidaSer <= 0) {
-                        seresDerrotados++;
-                    }
-
-                }
-
-                if (seresDerrotados == escenario.getUnidadEscenario(ataque).seresUnidad.length) {
-                    puntosGanados = puntosGanados + escenario.getUnidadEscenario(ataque).puntosAnulado;
-                    escenario.getUnidadEscenario(ataque).setUnidadAnulada(true);
-                }
-
-            }
+            puntosGanados = escenario.getUnidadEscenario(ataque).unidadRecibeAtaque(this.potenciaAtaque);
         }
 
+        return puntosGanados;
+    }
+
+    /**
+     * Este método permite a una unidad recibir un ataque con las consecuencias
+     * que conlleva (unidad o seres anulados, puntos ganados por anulación)
+     *
+     * @param potenciaAtaque Potencia del ataque recibido
+     *
+     * @return Puntos ganados con la anulacion de seres o la unidad
+     */
+    public int unidadRecibeAtaque(int potenciaAtaque) {
+        int puntosGanados = 0;
+
+        if (this.energiaDefensa >= potenciaAtaque) {
+            this.energiaDefensa = this.energiaDefensa - potenciaAtaque;
+            System.out.println("Se ha atacado la posicion " + this.posicion + " donde habia un(a)"); //falta implementar el tipo de unidad
+        } else {
+            float daño = (float) potenciaAtaque - (float) this.energiaDefensa / this.seresUnidad.length;
+            this.energiaDefensa = 0;
+            int seresDerrotados = 0;
+
+            for (int numeroSer = this.seresUnidad.length - 1; numeroSer >= 0; numeroSer--) {
+
+                if (this.seresUnidad[numeroSer].serDebePuntos(daño)) {
+                    puntosGanados = puntosGanados + this.seresUnidad[numeroSer].getPuntosAnulado();
+                }
+                if (this.seresUnidad[numeroSer].serDerrotado()) {
+                    seresDerrotados++;
+                }
+            }
+            if (seresDerrotados == this.seresUnidad.length) {
+                puntosGanados = puntosGanados + this.puntosAnulado;
+                this.unidadAnulada = true;
+            }
+        }
         return puntosGanados;
     }
 
@@ -159,6 +159,7 @@ public abstract class Unidad {
      *
      * @param coordenada Coordenada a determinar
      * @param maximoRango Distancia de alcance de los ataques de la unidad
+     *
      * @return True si esta en rango, false si no lo esta
      */
     public Boolean comprobarRango(Coordenada coordenada, int maximoRango) {

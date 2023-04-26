@@ -3,6 +3,7 @@ package battleForFreedom.modelo.propio;
 import battleForFreedom.excepciones.AtaqueException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
+import battleForFreedom.modelo.tropas.unidades.Unidad;
 
 /**
  *
@@ -26,24 +27,18 @@ public class Jugador {
 
     /**
      * Este método llama al método atacar de la clase Unidad para realizar un
-     * ataque con una unidad del jugador, a una coordenada concreta, que se
-     * obtienen con métodos secundarios de la clase Jugador.Almacena la suma de
-     * puntos del usuario antes de realizar el ataque más los puntos ganados al
-     * anular unidades o seres en dicho ataque (en caso de conseguirlo).
+     * ataque con una unidad del jugador, a una coordenada concreta.Almacena la
+     * suma de puntos del usuario antes de realizar el ataque más los puntos
+     * ganados al anular unidades o seres en dicho ataque (en caso de
+     * conseguirlo).
      *
      * @param escenario Escenario de la partida actual
      */
-    public void realizarAtaque(Escenario escenario) {
-        Coordenada coordenadaAtaque = elegirCoordenada(escenario);
+    public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad) throws AtaqueException {
         int puntosActuales = this.equipo.getPuntosDisponibles();
-        int puntosGanados = 0;
-        try {
-            puntosGanados = elegirUnidad().atacar(coordenadaAtaque, escenario);
-        } catch (AtaqueException ae) {
-        } finally {
-            int puntosFinales = puntosActuales + puntosGanados;
-            this.equipo.setPuntosDisponibles(puntosFinales);
-        }
+        int puntosGanados = unidad.atacar(coordenadaAtaque, escenario);
+        int puntosFinales = puntosActuales + puntosGanados;
+        this.equipo.setPuntosDisponibles(puntosFinales);
     }
 
     /**
