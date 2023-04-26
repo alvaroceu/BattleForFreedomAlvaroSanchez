@@ -23,7 +23,7 @@ public class PlataformaMovilidadAmplificadaMitsubishiMK6 extends UnidadRDA {
      */
     @Override
     public Boolean enRangoAtaque(Coordenada coordenada) {
-        return this.comprobarRango(coordenada, 1);
+        return this.comprobarRangoAtaque(coordenada, 1);
     }
 
     /**

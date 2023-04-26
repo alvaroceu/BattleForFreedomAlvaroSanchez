@@ -22,7 +22,7 @@ public class AT99Escorpion extends UnidadRDA {
      */
     @Override
     public Boolean enRangoAtaque(Coordenada coordenada) {
-        return this.comprobarRango(coordenada, 10);
+        return this.comprobarRangoAtaque(coordenada, 10);
     }
 
     /**

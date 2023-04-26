@@ -143,7 +143,7 @@ public abstract class Unidad {
      *
      * @return True si esta en rango, false si no lo esta
      */
-    public Boolean comprobarRango(Coordenada coordenada, int maximoRango) {
+    public Boolean comprobarRangoAtaque(Coordenada coordenada, int maximoRango) {
         Boolean rango = true;
 
         if ((coordenada.getX() < (this.posicion.getX() - maximoRango))

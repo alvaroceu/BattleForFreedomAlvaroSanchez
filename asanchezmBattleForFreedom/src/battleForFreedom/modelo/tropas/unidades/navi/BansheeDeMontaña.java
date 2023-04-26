@@ -22,7 +22,7 @@ public class BansheeDeMontaña extends UnidadNavi {
      */
     @Override
     public Boolean enRangoAtaque(Coordenada coordenada) {
-        return this.comprobarRango(coordenada, 3);
+        return this.comprobarRangoAtaque(coordenada, 3);
     }
 
     /**

@@ -22,7 +22,7 @@ public class AerospatialeSA2Samson extends UnidadRDA {
      */
     @Override
     public Boolean enRangoAtaque(Coordenada coordenada) {
-        return this.comprobarRango(coordenada, 5);
+        return this.comprobarRangoAtaque(coordenada, 5);
     }
 
     /**
