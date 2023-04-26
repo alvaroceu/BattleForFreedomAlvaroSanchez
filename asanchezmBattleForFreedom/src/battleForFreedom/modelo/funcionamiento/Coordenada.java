@@ -1,5 +1,6 @@
 package battleForFreedom.modelo.funcionamiento;
 
+import battleForFreedom.modelo.escenarios.Escenario;
 import java.util.Random;
 
 /**
@@ -16,12 +17,21 @@ public class Coordenada {
      * que recibe como parametro.
      *
      * @param maximo Rngo maximo
-     *
      */
     public Coordenada(int maximo) {
         Random r = new Random();
         this.x = r.nextInt(maximo);
         this.y = r.nextInt(maximo);
+    }
+
+    /**
+     * Constructor que genera una coordenada aleatoria dentro del rango maximo
+     * establecido por la posicion maxima del escenario recibido como parametro
+     *
+     * @param escenario del cual se obtiene la posicion máxima.
+     */
+    public Coordenada(Escenario escenario) {
+        this(escenario.getPosicionMaxima());
     }
 
     /**
