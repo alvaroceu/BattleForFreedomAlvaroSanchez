@@ -48,25 +48,6 @@ public abstract class Unidad {
     }
 
     /**
-     * Este metodo permite obtener la posicion actual de una unidad
-     *
-     * @return Posicion de la unidad
-     */
-    public Coordenada getPosicion() {
-        return this.posicion;
-    }
-
-    /**
-     * Este metodo permite cambiar el valor de unidadAnulada.
-     *
-     * @param unidadAnulada Nuevo valor (true,false)
-     *
-     */
-    public void setUnidadAnulada(Boolean unidadAnulada) {
-        this.unidadAnulada = unidadAnulada;
-    }
-
-    /**
      * Este metodo permite a una unidad realizar un ataque.En caso de acertar el
      * ataque, se llama al método unidadRecibeAtaque.
      *

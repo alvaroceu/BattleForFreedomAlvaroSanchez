@@ -32,34 +32,6 @@ public abstract class Ser {
     }
 
     /**
-     * Permite modificar el valor de la resistencia frente a ataques.
-     *
-     * @param resistenciaAtaques Nuevo valor
-     */
-    public void setResistenciaAtaques(float resistenciaAtaques) {
-        this.resistenciaAtaques = resistenciaAtaques;
-    }
-
-    /**
-     * Permite obtener el valor de la resistencia frente a ataques.
-     *
-     * @return valor de la resistencia frente a ataques.
-     */
-    public float getResistenciaAtaques() {
-        return resistenciaAtaques;
-    }
-
-    /**
-     * Permite modificar el valor de serAnulado (True = ser anulado , False =
-     * ser NO anulado)
-     *
-     * @param serAnulado Nuevo valor (true, false)
-     */
-    public void setSerAnulado(Boolean serAnulado) {
-        this.serAnulado = serAnulado;
-    }
-
-    /**
      * Este método permite saber si un ser debe puntos al jugador atacante, es
      * decir, si ha sido derrotado en ese mismo turno.Si el ser no es anulado
      * después del ataque, o el ser ya estaba anulado desde un principio, no
