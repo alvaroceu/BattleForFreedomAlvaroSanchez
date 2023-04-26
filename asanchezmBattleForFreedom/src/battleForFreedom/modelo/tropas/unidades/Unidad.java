@@ -6,6 +6,7 @@ import battleForFreedom.excepciones.FueraDeRangoException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.tropas.seres.Ser;
+import battleForFreedom.modelo.tropas.unidades.humanas.PlataformaMovilidadAmplificadaMitsubishiMK6;
 
 /**
  *
@@ -178,11 +179,20 @@ public abstract class Unidad {
             int horizontal = Math.abs(this.posicion.getX() - nuevaPosicion.getX());
             int vertical = Math.abs(this.posicion.getY() - nuevaPosicion.getY());
 
-            if (((horizontal + vertical) * this.gastoEnergia) > this.energiaMovimiento) {
-                throw new EnergiaMovimientoException();
+            if (this instanceof PlataformaMovilidadAmplificadaMitsubishiMK6) {
+                if (this.gastoEnergia > this.energiaMovimiento) {
+                    throw new EnergiaMovimientoException();
+                } else {
+                    this.energiaMovimiento = this.energiaMovimiento - this.gastoEnergia;
+                    this.posicion = nuevaPosicion;
+                }
             } else {
-                this.energiaMovimiento = this.energiaMovimiento - ((horizontal + vertical) * this.gastoEnergia);
-                this.posicion = nuevaPosicion;
+                if (((horizontal + vertical) * this.gastoEnergia) > this.energiaMovimiento) {
+                    throw new EnergiaMovimientoException();
+                } else {
+                    this.energiaMovimiento = this.energiaMovimiento - ((horizontal + vertical) * this.gastoEnergia);
+                    this.posicion = nuevaPosicion;
+                }
             }
         }
     }
