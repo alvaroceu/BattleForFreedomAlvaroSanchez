@@ -123,8 +123,8 @@ public abstract class Unidad {
     /**
      * Este método determina si una coordenada se encuentra dentro del rango de
      * ataque de una unidad o no.En su interior aparece la funcion
-     * comprobarRango que es la que indica el rango concreto de la unidad que
-     * llame al método.
+     * comprobarRangoAtaque que es la que indica el rango concreto de la unidad
+     * que llame al método.
      *
      * @param coordenada Coordenada a determinar.
      *
@@ -151,6 +151,43 @@ public abstract class Unidad {
                 || (coordenada.getY() < (this.posicion.getY() - maximoRango))
                 || (coordenada.getY() > (this.posicion.getX() + maximoRango))) {
 
+        }
+
+        return rango;
+    }
+
+    /**
+     * Este método determina si una coordenada se encuentra dentro del rango de
+     * movimiento de una unidad o no.En su interior aparece la funcion
+     * comprobarRangoMovimiento que es la que indica el rango concreto de la
+     * unidad que llame al método.
+     *
+     * @param coordenada Coordenada a determinar.
+     *
+     * @return True si esta en rango, false si no lo esta.
+     *
+     */
+    public abstract Boolean enRangoMovimiento(Coordenada coordenada);
+
+    /**
+     * Este método es un método auxiliar para el método enRangoMovimiento, y es
+     * el que determina si una coordenada dada se encuentra o no en el rango de
+     * movimiento de dicha unidad.Algunas unidades tienen movimientos especiales
+     * y no utilizan esta funcion.
+     *
+     * @param coordenada Coordenada a determinar
+     * @param maximoMovimiento Numero maximo de casillas avanzadas en un
+     * movimiento
+     *
+     * @return True si esta en rango, false si no lo esta
+     */
+    public Boolean comprobarRangoMovimiento(Coordenada coordenada, int maximoMovimiento) {
+        Boolean rango = false;
+        int horizontal = Math.abs(this.posicion.getX() - coordenada.getX());
+        int vertical = Math.abs(this.posicion.getY() - coordenada.getY());
+
+        if ((horizontal + vertical) <= maximoMovimiento) {
+            rango = true;
         }
 
         return rango;

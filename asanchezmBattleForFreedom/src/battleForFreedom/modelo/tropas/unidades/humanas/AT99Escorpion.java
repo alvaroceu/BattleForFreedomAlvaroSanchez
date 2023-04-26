@@ -32,4 +32,16 @@ public class AT99Escorpion extends UnidadRDA {
     public String toString() {
         return "AT-99 Escorpion";
     }
+
+    /**
+     * Este método determina si una coordenada dada se encuentra dentro del
+     * rango de ataque de la unidad de clase AT-99 Escorpion.
+     *
+     * @param coordenada Coordenada dada
+     * @return True si esta dentro de rango, false si no lo está
+     */
+    @Override
+    public Boolean enRangoMovimiento(Coordenada coordenada) {
+        return this.comprobarRangoMovimiento(coordenada, 20);
+    }
 }

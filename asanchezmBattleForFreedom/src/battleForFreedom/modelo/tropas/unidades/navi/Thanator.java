@@ -32,4 +32,16 @@ public class Thanator extends UnidadNavi {
     public String toString() {
         return "Thanator";
     }
+
+    /**
+     * Este método determina si una coordenada dada se encuentra dentro del
+     * rango de movimiento de la unidad de clase Thanator.
+     *
+     * @param coordenada Coordenada dada
+     * @return True si esta dentro de rango, false si no lo está
+     */
+    @Override
+    public Boolean enRangoMovimiento(Coordenada coordenada) {
+        return this.comprobarRangoMovimiento(coordenada, 50);
+    }
 }

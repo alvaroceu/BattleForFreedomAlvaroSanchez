@@ -33,4 +33,17 @@ public class PlataformaMovilidadAmplificadaMitsubishiMK6 extends UnidadRDA {
     public String toString() {
         return "Plataforma de Movilidad Amplificada Mitsubishi MK-6";
     }
+
+    /**
+     * Este método determina si una coordenada dada se encuentra dentro del
+     * rango de movimiento de la unidad de clase Plataforma de Movilidad
+     * Amplificada Mitsubishi MK-6.
+     *
+     * @param coordenada Coordenada dada
+     * @return True si esta dentro de rango, false si no lo está
+     */
+    @Override
+    public Boolean enRangoMovimiento(Coordenada coordenada) {
+        return this.comprobarRangoMovimiento(coordenada, 2);
+    }
 }

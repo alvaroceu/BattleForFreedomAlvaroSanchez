@@ -32,4 +32,16 @@ public class TitanothereCabezamartillo extends UnidadNavi {
     public String toString() {
         return "Titanothere Cabezamartillo";
     }
+
+    /**
+     * Este método determina si una coordenada dada se encuentra dentro del
+     * rango de movimiento de la unidad de clase Titanothere Cabezamartillo.
+     *
+     * @param coordenada Coordenada dada
+     * @return True si esta dentro de rango, false si no lo está
+     */
+    @Override
+    public Boolean enRangoMovimiento(Coordenada coordenada) {
+        return super.comprobarRangoMovimiento(coordenada, 2);
+    }
 }

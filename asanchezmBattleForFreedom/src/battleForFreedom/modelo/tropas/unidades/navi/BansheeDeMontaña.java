@@ -32,4 +32,17 @@ public class BansheeDeMontaña extends UnidadNavi {
     public String toString() {
         return "Banshee de Montaña";
     }
+
+    /**
+     * El método enRangoMovimiento de una Banshee de Montaña siempre devuelve
+     * true, ya que no tiene limitación de movimiento de casillas, tan solo de
+     * energía
+     *
+     * @param coordenada Coordenada dada
+     * @return True siempre
+     */
+    @Override
+    public Boolean enRangoMovimiento(Coordenada coordenada) {
+        return true;
+    }
 }
