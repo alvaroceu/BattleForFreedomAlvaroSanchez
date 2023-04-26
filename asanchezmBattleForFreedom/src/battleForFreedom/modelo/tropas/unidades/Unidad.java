@@ -62,7 +62,7 @@ public abstract class Unidad {
      */
     public int atacar(Coordenada ataque, Escenario escenario) throws AtaqueException {
         int puntosGanados = 0;
-        if (!enRangoAtaque(ataque)) {
+        if (!this.enRangoAtaque(ataque)) {
             throw new AtaqueException("Fuera de rango");
         }
         if (this.energiaAtaque < this.potenciaAtaque) {
@@ -155,4 +155,5 @@ public abstract class Unidad {
 
         return rango;
     }
+
 }
