@@ -1,6 +1,8 @@
 package battleForFreedom.modelo.tropas.unidades;
 
 import battleForFreedom.excepciones.AtaqueException;
+import battleForFreedom.excepciones.EnergiaMovimientoException;
+import battleForFreedom.excepciones.FueraDeRangoException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.tropas.seres.Ser;
@@ -20,6 +22,7 @@ public abstract class Unidad {
     private Coordenada posicion;
     private Ser[] seresUnidad;
     private Boolean unidadAnulada;
+    private int gastoEnergia;
 
     /**
      * Constructor de objetos de la clase Unidad
@@ -35,7 +38,7 @@ public abstract class Unidad {
      * @param numeroSeres Numero de seres que controlan la unidad
      *
      */
-    public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, Coordenada posicion, int numeroSeres) {
+    public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, Coordenada posicion, int numeroSeres, int gastoEnergia) {
         this.costeUnidad = costeUnidad;
         this.energiaAtaque = energiaAtaque;
         this.energiaDefensa = energiaDefensa;
@@ -44,6 +47,7 @@ public abstract class Unidad {
         this.puntosAnulado = puntosAnulado;
         this.posicion = posicion;
         this.seresUnidad = new Ser[numeroSeres];
+        this.gastoEnergia = gastoEnergia;
         this.unidadAnulada = false;
     }
 
@@ -154,6 +158,33 @@ public abstract class Unidad {
         }
 
         return rango;
+    }
+
+    /**
+     * Este metodo permite a una unidad moverse a una coordenada dada
+     *
+     * @param nuevaPosicion Nueva posicion de la unidad
+     *
+     * @throws FueraDeRangoException La nueva posicion se sale del rango de
+     * movimiento
+     * @throws EnergiaMovimientoException La unidad no tiene suficiente energía
+     * de movimiento
+     */
+    public void mover(Coordenada nuevaPosicion) throws FueraDeRangoException, EnergiaMovimientoException {
+
+        if (!this.enRangoMovimiento(nuevaPosicion)) {
+            throw new FueraDeRangoException();
+        } else {
+            int horizontal = Math.abs(this.posicion.getX() - nuevaPosicion.getX());
+            int vertical = Math.abs(this.posicion.getY() - nuevaPosicion.getY());
+
+            if (((horizontal + vertical) * this.gastoEnergia) > this.energiaMovimiento) {
+                throw new EnergiaMovimientoException();
+            } else {
+                this.energiaMovimiento = this.energiaMovimiento - ((horizontal + vertical) * this.gastoEnergia);
+                this.posicion = nuevaPosicion;
+            }
+        }
     }
 
     /**
