@@ -10,7 +10,7 @@ import battleForFreedom.modelo.tropas.unidades.UnidadRDA;
 public class AerospatialeSA2Samson extends UnidadRDA {
 
     public AerospatialeSA2Samson(Coordenada posicion) {
-        super(2500, 1000, 1000, 500, 80, 1500, posicion, 2);
+        super(2500, 1000, 1000, 500, 80, 1500, posicion, 2, 50);
     }
 
     /**

@@ -10,7 +10,7 @@ import battleForFreedom.modelo.tropas.unidades.UnidadNavi;
 public class BansheeDeMontaña extends UnidadNavi {
 
     public BansheeDeMontaña(Coordenada posicion) {
-        super(2000, 8000, 3500, 3500, 300, 1000, posicion, 2);
+        super(2000, 8000, 3500, 3500, 300, 1000, posicion, 2, 10);
     }
 
     /**
