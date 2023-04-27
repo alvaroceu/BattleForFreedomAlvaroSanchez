@@ -4,6 +4,7 @@ import battleForFreedom.excepciones.AtaqueException;
 import battleForFreedom.excepciones.CasillaOcupadaException;
 import battleForFreedom.excepciones.EnergiaMovimientoException;
 import battleForFreedom.excepciones.FueraDeRangoException;
+import battleForFreedom.excepciones.PuntosInsuficientesException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.tropas.unidades.Unidad;
@@ -55,6 +56,22 @@ public class Jugador {
      */
     public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, FueraDeRangoException, CasillaOcupadaException {
         unidad.mover(new Coordenada(escenario), escenario);
+    }
+
+    /**
+     * Este método permite comprar un unidad recibida como parámetro, obteniendo
+     * los puntos finales que tendrá el usuario tras comprar la unidad, y
+     * añadiendo la unidad comprada a la lista de unidades del jugador, y al
+     * escenario.
+     *
+     * @param unidadAComprar
+     * @param escenario
+     * @throws PuntosInsuficientesException
+     */
+    public void comprarUnidad(Unidad unidadAComprar, Escenario escenario) throws PuntosInsuficientesException {
+        int nuevosPuntos = unidadAComprar.comprar(this.equipo.getPuntosDisponibles(), escenario);
+        this.equipo.setPuntosDisponibles(nuevosPuntos);
+        this.equipo.getEjercito().getUnidades().add(unidadAComprar);
     }
 
     /**

@@ -4,6 +4,7 @@ import battleForFreedom.excepciones.AtaqueException;
 import battleForFreedom.excepciones.CasillaOcupadaException;
 import battleForFreedom.excepciones.EnergiaMovimientoException;
 import battleForFreedom.excepciones.FueraDeRangoException;
+import battleForFreedom.excepciones.PuntosInsuficientesException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.tropas.seres.Ser;
@@ -249,6 +250,27 @@ public abstract class Unidad {
         }
 
         return rango;
+    }
+
+    /**
+     * Método que realiza la resta de puntos de la compra de una unidad, y añade
+     * la unidad al escenario en caso de haberse comprado correctamente
+     *
+     * @param puntosDisponibles Puntos actuales del jugador
+     *
+     * @return Puntos finales del jugador tras descontar el coste de la unidad
+     *
+     * @throws PuntosInsuficientesException si no hay sificientes puntos para
+     * comprar
+     */
+    public int comprar(int puntosDisponibles, Escenario escenario) throws PuntosInsuficientesException {
+        if (puntosDisponibles < this.costeUnidad) {
+            throw new PuntosInsuficientesException();
+        } else {
+            puntosDisponibles = puntosDisponibles - this.costeUnidad;
+            escenario.setUnidadEscenario(this, this.posicion);
+        }
+        return puntosDisponibles;
     }
 
 }
