@@ -190,7 +190,7 @@ public abstract class Unidad {
                     }
 
                     this.energiaMovimiento = this.energiaMovimiento - this.gastoEnergia;
-                    this.posicion = nuevaPosicion;
+                    this.colocarUnidadEscenario(escenario, nuevaPosicion);
                 }
             } else {
                 if (((horizontal + vertical) * this.gastoEnergia) > this.energiaMovimiento) {
@@ -202,10 +202,16 @@ public abstract class Unidad {
                     }
 
                     this.energiaMovimiento = this.energiaMovimiento - ((horizontal + vertical) * this.gastoEnergia);
-                    this.posicion = nuevaPosicion;
+                    this.colocarUnidadEscenario(escenario, nuevaPosicion);
                 }
             }
         }
+    }
+
+    public void colocarUnidadEscenario(Escenario escenario, Coordenada nuevaPosicion) {
+        escenario.vaciarCasillaEscenario(this.posicion);
+        this.posicion = nuevaPosicion;
+        escenario.setUnidadEscenario(this, nuevaPosicion);
     }
 
     /**

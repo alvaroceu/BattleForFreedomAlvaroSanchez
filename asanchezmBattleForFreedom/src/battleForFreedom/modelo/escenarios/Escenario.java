@@ -48,4 +48,23 @@ public abstract class Escenario {
         return dimensionEscenario[x][y];
     }
 
+    /**
+     * Permite colocar una Unidad en una posicion del escenario
+     *
+     * @param coordenada Posicion en la que se busca la unidad
+     * @return La Unidad en cuestion, o null en caso de ser una coordenada vacía
+     */
+    public void setUnidadEscenario(Unidad unidad, Coordenada coordenada) {
+        this.dimensionEscenario[coordenada.getX()][coordenada.getY()] = unidad;
+    }
+
+    /**
+     * Permite vaciar la posición recibida como parametro
+     *
+     * @param coordenada Posicion a vacóiar
+     */
+    public void vaciarCasillaEscenario(Coordenada coordenada) {
+        this.dimensionEscenario[coordenada.getX()][coordenada.getY()] = null;
+    }
+
 }
