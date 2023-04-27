@@ -1,6 +1,7 @@
 package battleForFreedom.modelo.propio;
 
 import battleForFreedom.excepciones.AtaqueException;
+import battleForFreedom.excepciones.CasillaOcupadaException;
 import battleForFreedom.excepciones.EnergiaMovimientoException;
 import battleForFreedom.excepciones.FueraDeRangoException;
 import battleForFreedom.modelo.escenarios.Escenario;
@@ -52,8 +53,8 @@ public class Jugador {
      *
      * @param escenario Escenario de la partida actual
      */
-    public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, FueraDeRangoException {
-        unidad.mover(new Coordenada(escenario));
+    public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, FueraDeRangoException, CasillaOcupadaException {
+        unidad.mover(new Coordenada(escenario), escenario);
     }
 
     /**

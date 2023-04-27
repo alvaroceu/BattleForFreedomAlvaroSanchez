@@ -1,6 +1,7 @@
 package battleForFreedom.modelo.tropas.unidades;
 
 import battleForFreedom.excepciones.AtaqueException;
+import battleForFreedom.excepciones.CasillaOcupadaException;
 import battleForFreedom.excepciones.EnergiaMovimientoException;
 import battleForFreedom.excepciones.FueraDeRangoException;
 import battleForFreedom.modelo.escenarios.Escenario;
@@ -171,7 +172,7 @@ public abstract class Unidad {
      * @throws EnergiaMovimientoException La unidad no tiene suficiente energía
      * de movimiento
      */
-    public void mover(Coordenada nuevaPosicion) throws FueraDeRangoException, EnergiaMovimientoException {
+    public void mover(Coordenada nuevaPosicion, Escenario escenario) throws FueraDeRangoException, EnergiaMovimientoException, CasillaOcupadaException {
 
         if (!this.enRangoMovimiento(nuevaPosicion)) {
             throw new FueraDeRangoException();
@@ -183,6 +184,11 @@ public abstract class Unidad {
                 if (this.gastoEnergia > this.energiaMovimiento) {
                     throw new EnergiaMovimientoException(this.energiaMovimiento, this.gastoEnergia);
                 } else {
+
+                    if (escenario.getUnidadEscenario(nuevaPosicion) != null) {
+                        throw new CasillaOcupadaException();
+                    }
+
                     this.energiaMovimiento = this.energiaMovimiento - this.gastoEnergia;
                     this.posicion = nuevaPosicion;
                 }
@@ -190,6 +196,11 @@ public abstract class Unidad {
                 if (((horizontal + vertical) * this.gastoEnergia) > this.energiaMovimiento) {
                     throw new EnergiaMovimientoException(this.energiaMovimiento, this.gastoEnergia);
                 } else {
+
+                    if (escenario.getUnidadEscenario(nuevaPosicion) != null) {
+                        throw new CasillaOcupadaException();
+                    }
+
                     this.energiaMovimiento = this.energiaMovimiento - ((horizontal + vertical) * this.gastoEnergia);
                     this.posicion = nuevaPosicion;
                 }
