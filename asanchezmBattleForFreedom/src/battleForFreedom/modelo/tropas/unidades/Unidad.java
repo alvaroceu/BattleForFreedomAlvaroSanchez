@@ -181,14 +181,14 @@ public abstract class Unidad {
 
             if (this instanceof PlataformaMovilidadAmplificadaMitsubishiMK6) {
                 if (this.gastoEnergia > this.energiaMovimiento) {
-                    throw new EnergiaMovimientoException();
+                    throw new EnergiaMovimientoException(this.energiaMovimiento, this.gastoEnergia);
                 } else {
                     this.energiaMovimiento = this.energiaMovimiento - this.gastoEnergia;
                     this.posicion = nuevaPosicion;
                 }
             } else {
                 if (((horizontal + vertical) * this.gastoEnergia) > this.energiaMovimiento) {
-                    throw new EnergiaMovimientoException();
+                    throw new EnergiaMovimientoException(this.energiaMovimiento, this.gastoEnergia);
                 } else {
                     this.energiaMovimiento = this.energiaMovimiento - ((horizontal + vertical) * this.gastoEnergia);
                     this.posicion = nuevaPosicion;
