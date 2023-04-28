@@ -43,14 +43,14 @@ public abstract class Unidad {
      * @param numeroSeres Numero de seres que controlan la unidad
      *
      */
-    public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, Coordenada posicion, int numeroSeres, int gastoEnergia, Raza raza) {
+    public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, int numeroSeres, int gastoEnergia, Raza raza) {
         this.costeUnidad = costeUnidad;
         this.energiaAtaque = energiaAtaque;
         this.energiaDefensa = energiaDefensa;
         this.energiaMovimiento = energiaMovimiento;
         this.potenciaAtaque = potenciaAtaque;
         this.puntosAnulado = puntosAnulado;
-        this.posicion = posicion;
+        this.posicion = null;
         this.seresUnidad = new Ser[numeroSeres];
         this.gastoEnergia = gastoEnergia;
         this.unidadAnulada = false;

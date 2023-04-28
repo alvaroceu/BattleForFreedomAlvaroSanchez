@@ -10,7 +10,7 @@ import battleForFreedom.modelo.tropas.unidades.UnidadRDA;
 public class PlataformaMovilidadAmplificadaMitsubishiMK6 extends UnidadRDA {
 
     public PlataformaMovilidadAmplificadaMitsubishiMK6(Coordenada posicion) {
-        super(500, 1000, 0, 500, 20, 250, posicion, 1, 25);
+        super(500, 1000, 0, 500, 20, 250, 1, 25);
     }
 
     /**
