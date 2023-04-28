@@ -69,7 +69,7 @@ public class Jugador {
      * @throws PuntosInsuficientesException
      */
     public void comprarUnidad(Unidad unidadAComprar, Escenario escenario) throws PuntosInsuficientesException {
-        int nuevosPuntos = unidadAComprar.comprar(this.equipo.getPuntosDisponibles(), escenario);
+        int nuevosPuntos = unidadAComprar.compraDeUnidad(this.equipo.getPuntosDisponibles(), escenario);
         this.equipo.setPuntosDisponibles(nuevosPuntos);
         this.equipo.getEjercito().getUnidades().add(unidadAComprar);
     }

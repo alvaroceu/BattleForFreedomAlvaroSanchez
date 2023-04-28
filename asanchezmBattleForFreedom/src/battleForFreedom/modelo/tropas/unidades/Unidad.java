@@ -266,12 +266,11 @@ public abstract class Unidad {
      * @throws PuntosInsuficientesException si no hay sificientes puntos para
      * comprar
      */
-    public int comprar(int puntosDisponibles, Escenario escenario) throws PuntosInsuficientesException {
+    public int compraDeUnidad(int puntosDisponibles, Escenario escenario) throws PuntosInsuficientesException {
         if (puntosDisponibles < this.costeUnidad) {
             throw new PuntosInsuficientesException();
         } else {
             puntosDisponibles = puntosDisponibles - this.costeUnidad;
-            escenario.setUnidadEscenario(this, this.posicion);
         }
         return puntosDisponibles;
     }
