@@ -7,6 +7,7 @@ import battleForFreedom.excepciones.FueraDeRangoException;
 import battleForFreedom.excepciones.PuntosInsuficientesException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
+import battleForFreedom.modelo.tropas.seres.Ser;
 import battleForFreedom.modelo.tropas.unidades.Unidad;
 
 /**
@@ -72,6 +73,25 @@ public class Jugador {
         int nuevosPuntos = unidadAComprar.compraDeUnidad(this.equipo.getPuntosDisponibles(), escenario);
         this.equipo.setPuntosDisponibles(nuevosPuntos);
         this.equipo.getEjercito().getUnidades().add(unidadAComprar);
+    }
+
+    /**
+     * Este método permite comprar un ser recibida como parámetro, obteniendo
+     * los puntos finales que tendrá el usuario tras comprar el ser, y añadiendo
+     * el ser comprado a la unidad sobre la que se encuentra
+     *
+     * @param unidadAComprar
+     * @param escenario
+     * @throws PuntosInsuficientesException
+     */
+    public void comprarSer(Unidad unidadBajoSeres, Ser serAComprar, Escenario escenario) throws PuntosInsuficientesException {
+        int nuevosPuntos = serAComprar.compraDeSer(this.equipo.getPuntosDisponibles(), escenario);
+        this.equipo.setPuntosDisponibles(nuevosPuntos);
+        Boolean unidadCompleta = unidadBajoSeres.añadirSer(serAComprar);
+
+        if (unidadCompleta) {
+            unidadBajoSeres.colocarUnidad(escenario);
+        }
     }
 
     /**

@@ -1,5 +1,7 @@
 package battleForFreedom.modelo.tropas.seres;
 
+import battleForFreedom.excepciones.PuntosInsuficientesException;
+import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Raza;
 
 /**
@@ -72,6 +74,25 @@ public abstract class Ser {
      */
     public int getPuntosAnulado() {
         return puntosAnulado;
+    }
+
+    /**
+     * Método que realiza la resta de puntos de la compra de un ser
+     *
+     * @param puntosDisponibles Puntos actuales del jugador
+     *
+     * @return Puntos finales del jugador tras descontar el coste del ser
+     *
+     * @throws PuntosInsuficientesException si no hay sificientes puntos para
+     * comprar
+     */
+    public int compraDeSer(int puntosDisponibles, Escenario escenario) throws PuntosInsuficientesException {
+        if (puntosDisponibles < this.costeSer) {
+            throw new PuntosInsuficientesException();
+        } else {
+            puntosDisponibles = puntosDisponibles - this.costeSer;
+        }
+        return puntosDisponibles;
     }
 
 }

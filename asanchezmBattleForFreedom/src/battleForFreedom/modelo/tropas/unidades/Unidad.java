@@ -275,4 +275,56 @@ public abstract class Unidad {
         return puntosDisponibles;
     }
 
+    /**
+     * Este método establece la posición de un ser a una coordenada que se
+     * encuentre vacía en el escenario, después de haber comprobado (en un
+     * método de otra clase) que la unidad tiene a todos sus seres.
+     *
+     * @param escenario Escenario en el cual se coloca a la unidad
+     */
+    public void colocarUnidad(Escenario escenario) {
+        do {
+            this.posicion = new Coordenada(escenario);
+        } while (escenario.getUnidadEscenario(this.posicion) != null);
+
+        escenario.setUnidadEscenario(this, this.posicion);
+
+    }
+
+    /**
+     * Este método añade un ser que ya ha sido comprado a una unidad.Primero
+     * busca una posicion vacía dentro del ser, y cuando la encuentra se
+     * coloca.Después una variable Boolean (salirDelBucle) cambia su valor a
+     * "true" para que no se añada dicho ser en otras posiciones vacías de la
+     * unidad.Por ultimo comprueba si la unidad en la que se ha añadido un ser
+     * ya esta completa o no.En caso de estarlo, la funcion devuelve true
+     *
+     * @param serAñadido Ser colocado en la unidad
+     *
+     * @return unidadCompleta True si la unidad se ha llenado al colocar el
+     * ultimo ser
+     */
+    public Boolean añadirSer(Ser serAñadido) {
+        Boolean salirDelBucle = false;
+        for (int numeroSer = 0; numeroSer < this.seresUnidad.length; numeroSer++) {
+            if ((this.seresUnidad[numeroSer] == null) && (!salirDelBucle)) {
+                this.seresUnidad[numeroSer] = serAñadido;
+                salirDelBucle = true;
+            }
+        }
+
+        Boolean unidadCompleta = false;
+        int numeroSeresColocados = 0;
+        for (int numeroSer = 0; numeroSer < this.seresUnidad.length; numeroSer++) {
+            if (this.seresUnidad[numeroSer] != null) {
+                numeroSeresColocados++;
+            }
+        }
+        if (numeroSeresColocados == this.seresUnidad.length) {
+            unidadCompleta = true;
+        }
+
+        return unidadCompleta;
+    }
+
 }
