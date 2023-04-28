@@ -7,6 +7,7 @@ import battleForFreedom.excepciones.FueraDeRangoException;
 import battleForFreedom.excepciones.PuntosInsuficientesException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
+import battleForFreedom.modelo.funcionamiento.Raza;
 import battleForFreedom.modelo.tropas.seres.Ser;
 import battleForFreedom.modelo.tropas.unidades.humanas.PlataformaMovilidadAmplificadaMitsubishiMK6;
 
@@ -26,6 +27,7 @@ public abstract class Unidad {
     private Ser[] seresUnidad;
     private Boolean unidadAnulada;
     private int gastoEnergia;
+    private Raza raza;
 
     /**
      * Constructor de objetos de la clase Unidad
@@ -41,7 +43,7 @@ public abstract class Unidad {
      * @param numeroSeres Numero de seres que controlan la unidad
      *
      */
-    public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, Coordenada posicion, int numeroSeres, int gastoEnergia) {
+    public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, Coordenada posicion, int numeroSeres, int gastoEnergia, Raza raza) {
         this.costeUnidad = costeUnidad;
         this.energiaAtaque = energiaAtaque;
         this.energiaDefensa = energiaDefensa;
@@ -52,6 +54,7 @@ public abstract class Unidad {
         this.seresUnidad = new Ser[numeroSeres];
         this.gastoEnergia = gastoEnergia;
         this.unidadAnulada = false;
+        this.raza = raza;
     }
 
     /**
