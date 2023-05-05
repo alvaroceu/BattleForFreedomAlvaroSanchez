@@ -38,6 +38,10 @@ public class Jugador {
      * conseguirlo).
      *
      * @param escenario Escenario de la partida actual
+     * @param coordenadaAtaque Coordenada a la que se realizará el ataque
+     * @param unidad Unidad que realiza el ataque
+     *
+     * @throws battleForFreedom.excepciones.AtaqueException
      */
     public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad) throws AtaqueException {
         int puntosActuales = this.equipo.getPuntosDisponibles();
@@ -54,6 +58,11 @@ public class Jugador {
      * conseguirlo).
      *
      * @param escenario Escenario de la partida actual
+     * @param unidad Unidad que se moverá
+     *
+     * @throws battleForFreedom.excepciones.EnergiaMovimientoException
+     * @throws battleForFreedom.excepciones.FueraDeRangoException
+     * @throws battleForFreedom.excepciones.CasillaOcupadaException
      */
     public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, FueraDeRangoException, CasillaOcupadaException {
         unidad.mover(new Coordenada(escenario), escenario);
@@ -80,8 +89,10 @@ public class Jugador {
      * los puntos finales que tendrá el usuario tras comprar el ser, y añadiendo
      * el ser comprado a la unidad sobre la que se encuentra
      *
-     * @param unidadAComprar
+     * @param unidadBajoSeres Unidad que controlarán los seres comprados
+     * @param serAComprar Ser que se pretende comprar
      * @param escenario
+     *
      * @throws PuntosInsuficientesException
      */
     public void comprarSer(Unidad unidadBajoSeres, Ser serAComprar, Escenario escenario) throws PuntosInsuficientesException {

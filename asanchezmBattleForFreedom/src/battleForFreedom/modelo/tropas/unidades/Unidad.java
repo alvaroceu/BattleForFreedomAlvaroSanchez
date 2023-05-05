@@ -39,8 +39,9 @@ public abstract class Unidad {
      * @param potenciaAtaque Cantidad que se resta de energia de ataque y
      * defensa
      * @param puntosAnulado Puntos que recibe el jugador que elimina la unidad
-     * @param posicion Coordenadas de la unidad en el escenario
      * @param numeroSeres Numero de seres que controlan la unidad
+     * @param gastoEnergia Energia gastada al moverse
+     * @param raza Raza de la unidad (humano, navi)
      *
      */
     public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, int numeroSeres, int gastoEnergia, Raza raza) {
@@ -170,11 +171,13 @@ public abstract class Unidad {
      * Este metodo permite a una unidad moverse a una coordenada dada
      *
      * @param nuevaPosicion Nueva posicion de la unidad
+     * @param escenario Escenario en el que se mueve la unidad
      *
      * @throws FueraDeRangoException La nueva posicion se sale del rango de
      * movimiento
      * @throws EnergiaMovimientoException La unidad no tiene suficiente energía
      * de movimiento
+     * @throws battleForFreedom.excepciones.CasillaOcupadaException
      */
     public void mover(Coordenada nuevaPosicion, Escenario escenario) throws FueraDeRangoException, EnergiaMovimientoException, CasillaOcupadaException {
 
@@ -260,6 +263,7 @@ public abstract class Unidad {
      * la unidad al escenario en caso de haberse comprado correctamente
      *
      * @param puntosDisponibles Puntos actuales del jugador
+     * @param escenario Escenario de la partida actual
      *
      * @return Puntos finales del jugador tras descontar el coste de la unidad
      *

@@ -70,7 +70,7 @@ public abstract class Ser {
     /**
      * Permite obtener la cantidad de puntos que se ganan al anular la unidad
      *
-     * @returns Puntos ganados por anulacion.
+     * @return Puntos ganados por anulacion.
      */
     public int getPuntosAnulado() {
         return puntosAnulado;
@@ -80,6 +80,7 @@ public abstract class Ser {
      * Método que realiza la resta de puntos de la compra de un ser
      *
      * @param puntosDisponibles Puntos actuales del jugador
+     * @param escenario Escenario de la partida actual
      *
      * @return Puntos finales del jugador tras descontar el coste del ser
      *
