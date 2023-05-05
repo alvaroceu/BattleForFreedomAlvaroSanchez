@@ -42,4 +42,46 @@ public class Partida {
         this(new Jugador(jugadorHumano, escenarioPartida), new Jugador(jugadorNavi, escenarioPartida), escenarioPartida);
     }
 
+    /**
+     * Permite obtener el turno actual de la partida
+     *
+     * @return turno actual
+     */
+    public int getTurno() {
+        return this.turno;
+    }
+
+    /**
+     * Permite pasar de turno.
+     */
+    public void pasarTurno() {
+        this.turno = this.turno + 1;
+    }
+
+    /**
+     * Permite obtener el jugador ganador de la partida.
+     *
+     * @return ganador
+     */
+    public Jugador getGanador() {
+        return this.ganador;
+    }
+
+    /**
+     * Permite obtener al jugador que controla a los humanos
+     *
+     * @return jugador humano
+     */
+    public Jugador getJugadorHumano() {
+        return this.jugador1;
+    }
+
+    /**
+     * Permite obtener al jugador que controla a los navi
+     *
+     * @return jugador navi
+     */
+    public Jugador getJugadorNavi() {
+        return this.jugador2;
+    }
 }
