@@ -35,8 +35,8 @@ public class Partida {
      * jugadores
      *
      * @param escenarioPartida
-     * @param jugadorHumano
-     * @param jugadorNavi
+     * @param jugadorHumano nombre del jugador humano
+     * @param jugadorNavi nombre del jugador navi
      */
     public Partida(Escenario escenarioPartida, String jugadorHumano, String jugadorNavi) {
         this(new Jugador(jugadorHumano, escenarioPartida), new Jugador(jugadorNavi, escenarioPartida), escenarioPartida);
@@ -83,5 +83,22 @@ public class Partida {
      */
     public Jugador getJugadorNavi() {
         return this.jugador2;
+    }
+
+    /**
+     * Permite obtener al jugador al que le toque actuar en función del turno de
+     * la partida.En el caso de estar en un turno par, el jugador en cuestión
+     * será el humano, y en los turnos impares jugará el na'vi.
+     *
+     * @return jugador al que le toca jugar.
+     */
+    public Jugador getJugadorActual() {
+        Jugador jugadorActual;
+        if (this.turno % 2 == 0) {
+            jugadorActual = this.jugador1;
+        } else {
+            jugadorActual = this.jugador2;
+        }
+        return jugadorActual;
     }
 }
