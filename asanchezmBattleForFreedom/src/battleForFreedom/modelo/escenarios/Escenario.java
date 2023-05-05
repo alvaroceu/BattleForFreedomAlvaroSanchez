@@ -51,8 +51,8 @@ public abstract class Escenario {
     /**
      * Permite colocar una Unidad en una posicion del escenario
      *
+     * @param unidad Unidad que se va a colocar
      * @param coordenada Posicion en la que se busca la unidad
-     * @return La Unidad en cuestion, o null en caso de ser una coordenada vacía
      */
     public void setUnidadEscenario(Unidad unidad, Coordenada coordenada) {
         this.dimensionEscenario[coordenada.getX()][coordenada.getY()] = unidad;
