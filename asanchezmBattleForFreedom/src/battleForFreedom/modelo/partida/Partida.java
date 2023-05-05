@@ -36,7 +36,7 @@ public class Partida {
      *
      * @param escenarioPartida
      * @param jugadorHumano nombre del jugador humano
-     * @param jugadorNavi nombre del jugador navi
+     * @param jugadorNavi nombre del jugador navi.
      */
     public Partida(Escenario escenarioPartida, String jugadorHumano, String jugadorNavi) {
         this(new Jugador(jugadorHumano, escenarioPartida), new Jugador(jugadorNavi, escenarioPartida), escenarioPartida);
