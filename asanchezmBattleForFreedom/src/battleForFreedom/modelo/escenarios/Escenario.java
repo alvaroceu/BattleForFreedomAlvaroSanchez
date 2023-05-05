@@ -27,6 +27,17 @@ public abstract class Escenario {
     }
 
     /**
+     * Permite obtener el numero de puntos iniciales establecidos según el
+     * escenario en el que se cree una partida para poder dar esa cantidad de
+     * puntos a los jugadores.
+     *
+     * @return Numero de puntos iniciales
+     */
+    public int getPuntosIniciales() {
+        return this.puntosIniciales;
+    }
+
+    /**
      * Permite obtener el valor maximo de los parametros (x e y) de la dimension
      * del escenario.
      *

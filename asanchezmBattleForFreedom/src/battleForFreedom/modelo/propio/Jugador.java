@@ -25,9 +25,9 @@ public class Jugador {
      * @param Id Nombre o identificación del jugador
      * @param equipo Equipo del jugador
      */
-    public Jugador(String Id, Equipo equipo) {
+    public Jugador(String Id, Escenario escenario) {
         this.ID = Id;
-        this.equipo = equipo;
+        this.equipo = new Equipo(escenario.getPuntosIniciales());
     }
 
     /**

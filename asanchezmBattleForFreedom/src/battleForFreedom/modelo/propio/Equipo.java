@@ -15,9 +15,9 @@ public class Equipo {
      *
      * @param ejercito Ejercito que contiene a las unidades del jugador.
      */
-    public Equipo(Ejercito ejercito) {
-        this.ejercito = ejercito;
-        this.puntosDisponibles = 0;
+    public Equipo(int puntosDisponibles) {
+        this.ejercito = new Ejercito();
+        this.puntosDisponibles = puntosDisponibles;
     }
 
     /**
