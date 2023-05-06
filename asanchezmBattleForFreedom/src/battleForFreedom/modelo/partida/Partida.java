@@ -101,4 +101,14 @@ public class Partida {
         }
         return jugadorActual;
     }
+
+    /**
+     * Permite obtener el escenario en el que se desarrolla la partida para
+     * poder pasarlo como parámetro a métodos de la clase jugador
+     *
+     * @return Escenario en cuestión
+     */
+    public Escenario getEscenario() {
+        return this.escenarioPartida;
+    }
 }
