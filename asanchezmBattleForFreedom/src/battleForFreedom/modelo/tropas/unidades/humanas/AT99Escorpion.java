@@ -9,7 +9,7 @@ import battleForFreedom.modelo.tropas.unidades.UnidadRDA;
  */
 public class AT99Escorpion extends UnidadRDA {
 
-    public AT99Escorpion(Coordenada posicion) {
+    public AT99Escorpion() {
         super(15000, 7500, 7500, 5000, 500, 10000, 4, 100);
     }
 

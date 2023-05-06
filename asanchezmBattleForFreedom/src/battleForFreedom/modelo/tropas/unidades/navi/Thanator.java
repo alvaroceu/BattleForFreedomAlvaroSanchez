@@ -9,7 +9,7 @@ import battleForFreedom.modelo.tropas.unidades.UnidadNavi;
  */
 public class Thanator extends UnidadNavi {
 
-    public Thanator(Coordenada posicion) {
+    public Thanator() {
         super(8000, 9000, 9000, 6000, 600, 4000, 3, 10);
     }
 

@@ -9,7 +9,7 @@ import battleForFreedom.modelo.tropas.unidades.UnidadNavi;
  */
 public class TitanothereCabezamartillo extends UnidadNavi {
 
-    public TitanothereCabezamartillo(Coordenada posicion) {
+    public TitanothereCabezamartillo() {
         super(1000, 11000, 11000, 4500, 300, 250, 1, 25);
     }
 
