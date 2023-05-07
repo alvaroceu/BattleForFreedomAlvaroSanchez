@@ -110,7 +110,7 @@ public abstract class Unidad {
             this.energiaDefensa = this.energiaDefensa - potenciaAtaque;
             System.out.println("Se ha atacado la posicion " + this.posicion + " donde habia un(a)"); //falta implementar el tipo de unidad
         } else {
-            float daño = (float) potenciaAtaque - (float) this.energiaDefensa / this.seresUnidad.length;
+            float daño = ((float) potenciaAtaque - (float) this.energiaDefensa) / this.seresUnidad.length;
             this.energiaDefensa = 0;
             int seresDerrotados = 0;
 
