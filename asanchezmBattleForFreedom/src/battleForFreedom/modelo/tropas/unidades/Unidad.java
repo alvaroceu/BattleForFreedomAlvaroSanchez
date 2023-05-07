@@ -9,6 +9,7 @@ import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.funcionamiento.Raza;
 import battleForFreedom.modelo.tropas.seres.Ser;
 import battleForFreedom.modelo.tropas.unidades.humanas.PlataformaMovilidadAmplificadaMitsubishiMK6;
+import battleForFreedom.modelo.tropas.unidades.navi.BansheeDeMontaña;
 import java.util.Random;
 
 /**
@@ -168,16 +169,22 @@ public abstract class Unidad {
     }
 
     /**
-     * Este metodo permite a una unidad moverse a una coordenada dada
+     * Este metodo permite a una unidad moverse a una coordenada
      *
      * @param escenario Escenario en el que se mueve la unidad
      * @throws EnergiaMovimientoException La unidad no tiene suficiente energía
      * de movimiento
-     * @throws battleForFreedom.excepciones.CasillaOcupadaException
+     * @throws battleForFreedom.excepciones.CasillaOcupadaException La casilla a
+     * la que se pretende mover ya esta ocupada
      */
     public void mover(Escenario escenario) throws EnergiaMovimientoException, CasillaOcupadaException {
 
-        Coordenada nuevaPosicion = establecerCoordenadaMovimiento();
+        Coordenada nuevaPosicion = null;
+        if (this instanceof BansheeDeMontaña) {
+            nuevaPosicion = new Coordenada(escenario);
+        } else {
+            nuevaPosicion = establecerCoordenadaMovimiento();
+        }
 
         int horizontal = Math.abs(this.posicion.getX() - nuevaPosicion.getX());
         int vertical = Math.abs(this.posicion.getY() - nuevaPosicion.getY());
@@ -209,6 +216,14 @@ public abstract class Unidad {
         }
     }
 
+    /**
+     * Este método cambia la posición de una unidad una vez que se ha realizado
+     * el método mover, y actualiza el escenario, quitando a la unidad de la
+     * antigua posición y añadiéndola en la nueva.
+     *
+     * @param escenario
+     * @param nuevaPosicion
+     */
     public void moverUnidadCasilla(Escenario escenario, Coordenada nuevaPosicion) {
         escenario.vaciarCasillaEscenario(this.posicion);
         this.posicion = nuevaPosicion;
