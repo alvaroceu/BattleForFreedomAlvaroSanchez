@@ -34,15 +34,14 @@ public class BansheeDeMontaña extends UnidadNavi {
     }
 
     /**
-     * El método enRangoMovimiento de una Banshee de Montaña siempre devuelve
-     * true, ya que no tiene limitación de movimiento de casillas, tan solo de
-     * energía
+     * Este método siempre devuelve null ya que la banshee de montaña no tiene
+     * limite de movimiento y por lo tanto no es necesario establecer una
+     * posición desde esta clase, y se podrá hacer desde la clase padre.
      *
-     * @param coordenada Coordenada dada
-     * @return True siempre
+     * @return null
      */
     @Override
-    public Boolean enRangoMovimiento(Coordenada coordenada) {
-        return true;
+    public Coordenada establecerCoordenadaMovimiento() {
+        return null;
     }
 }

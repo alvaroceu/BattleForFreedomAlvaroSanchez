@@ -65,7 +65,7 @@ public class Jugador {
      * @throws battleForFreedom.excepciones.CasillaOcupadaException
      */
     public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, FueraDeRangoException, CasillaOcupadaException {
-        unidad.mover(new Coordenada(escenario), escenario);
+        unidad.mover(escenario);
     }
 
     /**

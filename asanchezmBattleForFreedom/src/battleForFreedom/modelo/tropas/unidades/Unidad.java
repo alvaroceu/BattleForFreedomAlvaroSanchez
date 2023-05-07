@@ -3,13 +3,13 @@ package battleForFreedom.modelo.tropas.unidades;
 import battleForFreedom.excepciones.AtaqueException;
 import battleForFreedom.excepciones.CasillaOcupadaException;
 import battleForFreedom.excepciones.EnergiaMovimientoException;
-import battleForFreedom.excepciones.FueraDeRangoException;
 import battleForFreedom.excepciones.PuntosInsuficientesException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.funcionamiento.Raza;
 import battleForFreedom.modelo.tropas.seres.Ser;
 import battleForFreedom.modelo.tropas.unidades.humanas.PlataformaMovilidadAmplificadaMitsubishiMK6;
+import java.util.Random;
 
 /**
  *
@@ -170,47 +170,41 @@ public abstract class Unidad {
     /**
      * Este metodo permite a una unidad moverse a una coordenada dada
      *
-     * @param nuevaPosicion Nueva posicion de la unidad
      * @param escenario Escenario en el que se mueve la unidad
-     *
-     * @throws FueraDeRangoException La nueva posicion se sale del rango de
-     * movimiento
      * @throws EnergiaMovimientoException La unidad no tiene suficiente energía
      * de movimiento
      * @throws battleForFreedom.excepciones.CasillaOcupadaException
      */
-    public void mover(Coordenada nuevaPosicion, Escenario escenario) throws FueraDeRangoException, EnergiaMovimientoException, CasillaOcupadaException {
+    public void mover(Escenario escenario) throws EnergiaMovimientoException, CasillaOcupadaException {
 
-        if (!this.enRangoMovimiento(nuevaPosicion)) {
-            throw new FueraDeRangoException();
-        } else {
-            int horizontal = Math.abs(this.posicion.getX() - nuevaPosicion.getX());
-            int vertical = Math.abs(this.posicion.getY() - nuevaPosicion.getY());
+        Coordenada nuevaPosicion = establecerCoordenadaMovimiento();
 
-            if (this instanceof PlataformaMovilidadAmplificadaMitsubishiMK6) {
-                if (this.gastoEnergia > this.energiaMovimiento) {
-                    throw new EnergiaMovimientoException(this.energiaMovimiento, this.gastoEnergia);
-                } else {
+        int horizontal = Math.abs(this.posicion.getX() - nuevaPosicion.getX());
+        int vertical = Math.abs(this.posicion.getY() - nuevaPosicion.getY());
 
-                    if (escenario.getUnidadEscenario(nuevaPosicion) != null) {
-                        throw new CasillaOcupadaException();
-                    }
-
-                    this.energiaMovimiento = this.energiaMovimiento - this.gastoEnergia;
-                    this.moverUnidadCasilla(escenario, nuevaPosicion);
-                }
+        if (this instanceof PlataformaMovilidadAmplificadaMitsubishiMK6) {
+            if (this.gastoEnergia > this.energiaMovimiento) {
+                throw new EnergiaMovimientoException(this.energiaMovimiento, this.gastoEnergia);
             } else {
-                if (((horizontal + vertical) * this.gastoEnergia) > this.energiaMovimiento) {
-                    throw new EnergiaMovimientoException(this.energiaMovimiento, this.gastoEnergia);
-                } else {
 
-                    if (escenario.getUnidadEscenario(nuevaPosicion) != null) {
-                        throw new CasillaOcupadaException();
-                    }
-
-                    this.energiaMovimiento = this.energiaMovimiento - ((horizontal + vertical) * this.gastoEnergia);
-                    this.moverUnidadCasilla(escenario, nuevaPosicion);
+                if (escenario.getUnidadEscenario(nuevaPosicion) != null) {
+                    throw new CasillaOcupadaException();
                 }
+
+                this.energiaMovimiento = this.energiaMovimiento - this.gastoEnergia;
+                this.moverUnidadCasilla(escenario, nuevaPosicion);
+            }
+        } else {
+            if (((horizontal + vertical) * this.gastoEnergia) > this.energiaMovimiento) {
+                throw new EnergiaMovimientoException(this.energiaMovimiento, this.gastoEnergia);
+            } else {
+
+                if (escenario.getUnidadEscenario(nuevaPosicion) != null) {
+                    throw new CasillaOcupadaException();
+                }
+
+                this.energiaMovimiento = this.energiaMovimiento - ((horizontal + vertical) * this.gastoEnergia);
+                this.moverUnidadCasilla(escenario, nuevaPosicion);
             }
         }
     }
@@ -222,40 +216,56 @@ public abstract class Unidad {
     }
 
     /**
-     * Este método determina si una coordenada se encuentra dentro del rango de
-     * movimiento de una unidad o no.En su interior aparece la funcion
-     * comprobarRangoMovimiento que es la que indica el rango concreto de la
-     * unidad que llame al método.
+     * Este método devuelve una coordenada que se encuentra dentro de las
+     * limitaciones de movimiento de una unidad concreta.Dicha coordenada la
+     * genera en primer lugar otro método.
      *
-     * @param coordenada Coordenada a determinar.
      *
-     * @return True si esta en rango, false si no lo esta.
+     * @return Coordenada a la que se moverá la unidad
      *
      */
-    public abstract Boolean enRangoMovimiento(Coordenada coordenada);
+    public abstract Coordenada establecerCoordenadaMovimiento();
 
     /**
-     * Este método es un método auxiliar para el método enRangoMovimiento, y es
-     * el que determina si una coordenada dada se encuentra o no en el rango de
-     * movimiento de dicha unidad.Algunas unidades tienen movimientos especiales
-     * y no utilizan esta funcion.
+     * Este método genera una coordenada aleatoria dentro del rango de
+     * movimiento de una unidad.
      *
-     * @param coordenada Coordenada a determinar
      * @param maximoMovimiento Numero maximo de casillas avanzadas en un
      * movimiento
      *
-     * @return True si esta en rango, false si no lo esta
+     * @return Coordenada a la que se moverá la unidad
      */
-    public Boolean comprobarRangoMovimiento(Coordenada coordenada, int maximoMovimiento) {
-        Boolean rango = false;
-        int horizontal = Math.abs(this.posicion.getX() - coordenada.getX());
-        int vertical = Math.abs(this.posicion.getY() - coordenada.getY());
+    public Coordenada generarCoordenadaMovimiento(int maximoMovimiento) {
 
-        if ((horizontal + vertical) <= maximoMovimiento) {
-            rango = true;
+        int xActual = this.posicion.getX();
+        int yActual = this.posicion.getY();
+        Random r = new Random();
+        int eleccion;
+
+        //Obligamos a que se mueva al menos una casilla en direccion x o y
+        eleccion = r.nextInt(2);
+        if (eleccion == 0) {
+            xActual++;
+        } else {
+            yActual++;
         }
 
-        return rango;
+        //Ahora puede moverse o no, de forma aleatoria
+        //Hasta que maximoMovimiento > 1 ya que ya se ha movido 1 casilla al llegar al bucle
+        for (int i = maximoMovimiento; i > 1; i--) {
+
+            eleccion = r.nextInt(3);
+
+            if (eleccion == 0) {
+                xActual++;
+            }
+            if (eleccion == 1) {
+                yActual++;
+            }
+
+        }
+
+        return new Coordenada(xActual, yActual);
     }
 
     /**

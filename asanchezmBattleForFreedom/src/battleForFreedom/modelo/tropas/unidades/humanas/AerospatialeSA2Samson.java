@@ -34,14 +34,13 @@ public class AerospatialeSA2Samson extends UnidadRDA {
     }
 
     /**
-     * Este método determina si una coordenada dada se encuentra dentro del
-     * rango de movimiento de la unidad de clase Aerospatiale SA-2 Samson.
+     * Este método genera una coordenada dentro del rango de movimiento de la
+     * unidad de clase PlataformaMovilidadAmplificadaMitsubishiMK6.
      *
-     * @param coordenada Coordenada dada
-     * @return True si esta dentro de rango, false si no lo está
+     * @return Coordenada en cuestion
      */
     @Override
-    public Boolean enRangoMovimiento(Coordenada coordenada) {
-        return this.comprobarRangoMovimiento(coordenada, 10);
+    public Coordenada establecerCoordenadaMovimiento() {
+        return super.generarCoordenadaMovimiento(10);
     }
 }

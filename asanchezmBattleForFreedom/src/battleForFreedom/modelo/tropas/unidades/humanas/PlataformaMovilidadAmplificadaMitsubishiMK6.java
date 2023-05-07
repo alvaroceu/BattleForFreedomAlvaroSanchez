@@ -35,15 +35,13 @@ public class PlataformaMovilidadAmplificadaMitsubishiMK6 extends UnidadRDA {
     }
 
     /**
-     * Este método determina si una coordenada dada se encuentra dentro del
-     * rango de movimiento de la unidad de clase Plataforma de Movilidad
-     * Amplificada Mitsubishi MK-6.
+     * Este método genera una coordenada dentro del rango de movimiento de la
+     * unidad de clase PlataformaMovilidadAmplificadaMitsubishiMK6.
      *
-     * @param coordenada Coordenada dada
-     * @return True si esta dentro de rango, false si no lo está
+     * @return Coordenada en cuestion
      */
     @Override
-    public Boolean enRangoMovimiento(Coordenada coordenada) {
-        return this.comprobarRangoMovimiento(coordenada, 2);
+    public Coordenada establecerCoordenadaMovimiento() {
+        return super.generarCoordenadaMovimiento(2);
     }
 }
