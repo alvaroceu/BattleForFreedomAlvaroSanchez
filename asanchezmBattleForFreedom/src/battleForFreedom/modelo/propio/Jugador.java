@@ -3,7 +3,6 @@ package battleForFreedom.modelo.propio;
 import battleForFreedom.excepciones.AtaqueException;
 import battleForFreedom.excepciones.CasillaOcupadaException;
 import battleForFreedom.excepciones.EnergiaMovimientoException;
-import battleForFreedom.excepciones.FueraDeRangoException;
 import battleForFreedom.excepciones.PuntosInsuficientesException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
@@ -64,7 +63,7 @@ public class Jugador {
      * @throws battleForFreedom.excepciones.FueraDeRangoException
      * @throws battleForFreedom.excepciones.CasillaOcupadaException
      */
-    public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, FueraDeRangoException, CasillaOcupadaException {
+    public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, CasillaOcupadaException {
         unidad.mover(escenario);
     }
 
