@@ -30,7 +30,7 @@ public class Thanator extends UnidadNavi {
      */
     @Override
     public String toString() {
-        return "Thanator";
+        return "Thanator" + super.toString();
     }
 
     /**

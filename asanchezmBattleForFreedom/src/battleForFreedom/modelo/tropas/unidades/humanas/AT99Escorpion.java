@@ -30,7 +30,7 @@ public class AT99Escorpion extends UnidadRDA {
      */
     @Override
     public String toString() {
-        return "AT-99 Escorpion";
+        return "AT-99 Escorpion" + super.toString();
     }
 
     /**

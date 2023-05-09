@@ -370,4 +370,15 @@ public abstract class Unidad {
         return unidadCompleta;
     }
 
+    /**
+     * Metodo toString que muestra la energia de ataque, defensa y posicion de
+     * una unidad
+     *
+     * @return cadena con dicha informacion
+     */
+    @Override
+    public String toString() {
+        return "ATK:(" + this.energiaAtaque + ")" + "DEF:(" + this.energiaDefensa + ")" + "POS:" + this.posicion;
+    }
+
 }

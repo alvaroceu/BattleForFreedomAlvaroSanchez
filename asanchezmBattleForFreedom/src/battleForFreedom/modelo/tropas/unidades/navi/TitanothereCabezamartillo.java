@@ -30,7 +30,7 @@ public class TitanothereCabezamartillo extends UnidadNavi {
      */
     @Override
     public String toString() {
-        return "Titanothere Cabezamartillo";
+        return "Titanothere Cabezamartillo" + super.toString();
     }
 
     /**

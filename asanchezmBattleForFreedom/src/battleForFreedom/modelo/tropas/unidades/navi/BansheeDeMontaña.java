@@ -30,7 +30,7 @@ public class BansheeDeMontaña extends UnidadNavi {
      */
     @Override
     public String toString() {
-        return "Banshee de Montaña";
+        return "Banshee de Montaña" + super.toString();
     }
 
     /**

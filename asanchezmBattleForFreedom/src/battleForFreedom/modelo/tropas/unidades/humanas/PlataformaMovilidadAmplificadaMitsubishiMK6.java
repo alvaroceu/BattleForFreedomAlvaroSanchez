@@ -31,7 +31,7 @@ public class PlataformaMovilidadAmplificadaMitsubishiMK6 extends UnidadRDA {
      */
     @Override
     public String toString() {
-        return "Plataforma de Movilidad Amplificada Mitsubishi MK-6";
+        return "Plataforma de Movilidad Amplificada Mitsubishi MK-6" + super.toString();
     }
 
     /**

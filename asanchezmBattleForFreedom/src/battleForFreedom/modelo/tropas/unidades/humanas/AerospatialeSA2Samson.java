@@ -30,7 +30,7 @@ public class AerospatialeSA2Samson extends UnidadRDA {
      */
     @Override
     public String toString() {
-        return "Aerospatiale SA-2 Samson";
+        return "Aerospatiale SA-2 Samson" + super.toString();
     }
 
     /**
