@@ -4,6 +4,7 @@ import battleForFreedom.excepciones.AtaqueException;
 import battleForFreedom.excepciones.CasillaOcupadaException;
 import battleForFreedom.excepciones.EnergiaMovimientoException;
 import battleForFreedom.excepciones.PuntosInsuficientesException;
+import battleForFreedom.excepciones.UnidadIncompletaException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.tropas.seres.Ser;
@@ -53,7 +54,7 @@ public class Jugador {
      *
      * @throws battleForFreedom.excepciones.AtaqueException
      */
-    public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad) throws AtaqueException {
+    public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad) throws AtaqueException, UnidadIncompletaException {
         int puntosActuales = this.equipo.getPuntosDisponibles();
         int puntosGanados = unidad.atacar(coordenadaAtaque, escenario);
         int puntosFinales = puntosActuales + puntosGanados;

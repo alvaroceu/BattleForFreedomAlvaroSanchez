@@ -12,15 +12,25 @@ public class AtaqueException extends Exception {
      * Constructor de excepciones AtaqueException.
      *
      * @param motivo Causa de la excepcion.
-    *
+     *
      */
     public AtaqueException(String motivo) {
         this.motivo = motivo;
     }
 
     /**
+     * Permite obtener el motivo de la excepción, con el objetivo de saber cómo
+     * debe tratarse
+     *
+     * @return motivo de la excepción.
+     */
+    public String getMotivo() {
+        return this.motivo;
+    }
+
+    /**
      * Representacion de AtaqueException.
-    *
+     *
      */
     @Override
     public String toString() {
