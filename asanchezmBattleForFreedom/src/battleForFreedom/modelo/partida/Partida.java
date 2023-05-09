@@ -68,6 +68,21 @@ public class Partida {
     }
 
     /**
+     * Permite establecer el ganador de la partida en funcion de si alguno de
+     * los jugadores ha perdido a todas sus unidades.
+     */
+    public void setGanador() {
+
+        if (this.jugador1.getUnidadesJugador().isEmpty()) {
+            this.ganador = this.jugador2;
+        }
+        if (this.jugador2.getUnidadesJugador().isEmpty()) {
+            this.ganador = this.jugador1;
+        }
+
+    }
+
+    /**
      * Permite obtener al jugador que controla a los humanos
      *
      * @return jugador humano

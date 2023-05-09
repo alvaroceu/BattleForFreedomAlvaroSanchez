@@ -30,6 +30,8 @@ public class Menu {
 
     public static void menuPrincipal(Partida partida) {
 
+        Boolean jugadoresPreparados = false;
+
         do {
             System.out.println("Turno de jugador: " + partida.getJugadorActual() + "\n"
                     + "¿Qué deseas hacer?\n\n"
@@ -69,6 +71,15 @@ public class Menu {
                 case 3:
                     menuComprar(partida);
                     break;
+            }
+
+            if (jugadoresPreparados == false) {
+                if ((partida.getJugadorHumano().getUnidadesJugador().isEmpty()) || (partida.getJugadorNavi().getUnidadesJugador().isEmpty())) {
+                } else {
+                    jugadoresPreparados = true;
+                }
+            } else {
+                partida.setGanador();
             }
 
             partida.pasarTurno();
