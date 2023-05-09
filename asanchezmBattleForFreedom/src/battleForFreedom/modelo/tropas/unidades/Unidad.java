@@ -342,6 +342,10 @@ public abstract class Unidad {
             }
         }
 
+        return this.unidadCompleta();
+    }
+
+    public Boolean unidadCompleta() {
         Boolean unidadCompleta = false;
         int numeroSeresColocados = 0;
         for (int numeroSer = 0; numeroSer < this.seresUnidad.length; numeroSer++) {
