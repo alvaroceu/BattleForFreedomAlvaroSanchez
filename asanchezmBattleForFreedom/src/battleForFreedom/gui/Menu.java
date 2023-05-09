@@ -1,6 +1,8 @@
 package battleForFreedom.gui;
 
 import battleForFreedom.excepciones.AtaqueException;
+import battleForFreedom.excepciones.CasillaOcupadaException;
+import battleForFreedom.excepciones.EnergiaMovimientoException;
 import battleForFreedom.excepciones.UnidadIncompletaException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
@@ -51,7 +53,7 @@ public class Menu {
                 case 1:
                     menuAtaque(partida.getJugadorActual(), partida.getEscenario());
                 case 2:
-                    menuMover();
+                    menuMover(partida.getJugadorActual(), partida.getEscenario());
                 case 3:
                     menuComprar();
             }
@@ -109,6 +111,55 @@ public class Menu {
                     System.out.println("Debe escoger una coordenada válida para el ataque");
                     repetir = true;
                 }
+            } catch (UnidadIncompletaException ex) {
+                //Debido a la implementacion de este método, nunca saltará esta excepción
+            }
+        } while (repetir);
+
+    }
+
+    private static void menuMover(Jugador jugador, Escenario escenario) {
+
+        System.out.println("Has escogido mover. ¿Qué unidad se movera?\n\n");
+
+        int indiceUnidad = 1;
+        for (Unidad unidad : jugador.getUnidadesJugador()) {
+            if (unidad.unidadCompleta()) {
+                System.out.println(indiceUnidad + "-" + unidad);
+                indiceUnidad++;
+            }
+        }
+        System.out.println("\n");
+
+        int unidadEscogida;
+        do {
+            unidadEscogida = leerEntero("Introduce tu opcion: ");
+            if ((unidadEscogida < 1) || (unidadEscogida > (indiceUnidad - 1))) {
+                System.out.println("La opcion escogida no existe, repite\n");
+            }
+        } while ((unidadEscogida < 1) || (unidadEscogida > (indiceUnidad - 1)));
+
+        Unidad unidadMovida = null;
+        int indiceUnidad2 = 1;
+        for (Unidad unidad : jugador.getUnidadesJugador()) {
+            if (unidad.unidadCompleta()) {
+                indiceUnidad2++;
+            }
+            if (indiceUnidad2 == indiceUnidad) {
+                unidadMovida = unidad;
+            }
+        }
+
+        Boolean repetir = false;
+        do {
+            try {
+                jugador.moverUnidad(escenario, unidadMovida);
+            } catch (EnergiaMovimientoException ex) {
+                if (ex.quedaEnergia()) {
+                    repetir = true;
+                }
+            } catch (CasillaOcupadaException ex) {
+                repetir = true;
             } catch (UnidadIncompletaException ex) {
                 //Debido a la implementacion de este método, nunca saltará esta excepción
             }
