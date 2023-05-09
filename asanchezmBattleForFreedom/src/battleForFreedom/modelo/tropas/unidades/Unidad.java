@@ -4,6 +4,7 @@ import battleForFreedom.excepciones.AtaqueException;
 import battleForFreedom.excepciones.CasillaOcupadaException;
 import battleForFreedom.excepciones.EnergiaMovimientoException;
 import battleForFreedom.excepciones.PuntosInsuficientesException;
+import battleForFreedom.excepciones.UnidadIncompletaException;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.funcionamiento.Raza;
@@ -72,8 +73,11 @@ public abstract class Unidad {
      * @return Puntos obtenidos en caso de haberse derrotado seres o la unidad
      *
      */
-    public int atacar(Coordenada ataque, Escenario escenario) throws AtaqueException {
+    public int atacar(Coordenada ataque, Escenario escenario) throws AtaqueException, UnidadIncompletaException {
         int puntosGanados = 0;
+        if (!this.unidadCompleta()) {
+            throw new UnidadIncompletaException();
+        }
         if (!this.enRangoAtaque(ataque)) {
             throw new AtaqueException("Fuera de rango");
         }
@@ -177,7 +181,11 @@ public abstract class Unidad {
      * @throws battleForFreedom.excepciones.CasillaOcupadaException La casilla a
      * la que se pretende mover ya esta ocupada
      */
-    public void mover(Escenario escenario) throws EnergiaMovimientoException, CasillaOcupadaException {
+    public void mover(Escenario escenario) throws EnergiaMovimientoException, CasillaOcupadaException, UnidadIncompletaException {
+
+        if (!this.unidadCompleta()) {
+            throw new UnidadIncompletaException();
+        }
 
         Coordenada nuevaPosicion = null;
         if (this instanceof BansheeDeMontaña) {
