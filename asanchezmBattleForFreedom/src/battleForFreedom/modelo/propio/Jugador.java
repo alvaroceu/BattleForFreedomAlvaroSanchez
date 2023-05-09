@@ -8,6 +8,7 @@ import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.tropas.seres.Ser;
 import battleForFreedom.modelo.tropas.unidades.Unidad;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,6 +28,16 @@ public class Jugador {
     public Jugador(String Id, Escenario escenario) {
         this.ID = Id;
         this.equipo = new Equipo(escenario.getPuntosIniciales());
+    }
+
+    /**
+     * Este método permite acceder a la lista de unidades del jugador, usado en
+     * la interfaz para los diferentes métodos que la componen
+     *
+     * @return lista de unidades del jugador
+     */
+    public ArrayList<Unidad> getUnidadesJugador() {
+        return this.equipo.getEjercito().getUnidades();
     }
 
     /**
