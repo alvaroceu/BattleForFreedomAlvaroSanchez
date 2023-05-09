@@ -71,6 +71,7 @@ public abstract class Unidad {
      * motivo(rango, energía, posición vacía)
      *
      * @return Puntos obtenidos en caso de haberse derrotado seres o la unidad
+     * @throws battleForFreedom.excepciones.UnidadIncompletaException
      *
      */
     public int atacar(Coordenada ataque, Escenario escenario) throws AtaqueException, UnidadIncompletaException {
@@ -180,6 +181,7 @@ public abstract class Unidad {
      * de movimiento
      * @throws battleForFreedom.excepciones.CasillaOcupadaException La casilla a
      * la que se pretende mover ya esta ocupada
+     * @throws battleForFreedom.excepciones.UnidadIncompletaException
      */
     public void mover(Escenario escenario) throws EnergiaMovimientoException, CasillaOcupadaException, UnidadIncompletaException {
 

@@ -24,7 +24,7 @@ public class Jugador {
      * Constructor de objetos de clase Jugador
      *
      * @param Id Nombre o identificación del jugador
-     * @param equipo Equipo del jugador
+     * @param escenario
      */
     public Jugador(String Id, Escenario escenario) {
         this.ID = Id;
@@ -53,6 +53,7 @@ public class Jugador {
      * @param unidad Unidad que realiza el ataque
      *
      * @throws battleForFreedom.excepciones.AtaqueException
+     * @throws battleForFreedom.excepciones.UnidadIncompletaException
      */
     public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad) throws AtaqueException, UnidadIncompletaException {
         int puntosActuales = this.equipo.getPuntosDisponibles();
@@ -72,10 +73,10 @@ public class Jugador {
      * @param unidad Unidad que se moverá
      *
      * @throws battleForFreedom.excepciones.EnergiaMovimientoException
-     * @throws battleForFreedom.excepciones.FueraDeRangoException
      * @throws battleForFreedom.excepciones.CasillaOcupadaException
+     * @throws battleForFreedom.excepciones.UnidadIncompletaException
      */
-    public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, CasillaOcupadaException {
+    public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, CasillaOcupadaException, UnidadIncompletaException {
         unidad.mover(escenario);
     }
 

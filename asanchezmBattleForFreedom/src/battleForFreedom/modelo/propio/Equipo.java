@@ -13,7 +13,7 @@ public class Equipo {
     /**
      * Constructor de objetos de la clase Ejercito.
      *
-     * @param ejercito Ejercito que contiene a las unidades del jugador.
+     * @param puntosDisponibles Puntos del equipo
      */
     public Equipo(int puntosDisponibles) {
         this.ejercito = new Ejercito();
