@@ -42,6 +42,15 @@ public class Jugador {
     }
 
     /**
+     * Permite obtener los puntos de los que dispone el jugador
+     *
+     * @return puntos en cuestión
+     */
+    public int getPuntos() {
+        return this.equipo.getPuntosDisponibles();
+    }
+
+    /**
      * Este método llama al método atacar de la clase Unidad para realizar un
      * ataque con una unidad del jugador, a una coordenada concreta.Almacena la
      * suma de puntos del usuario antes de realizar el ataque más los puntos
