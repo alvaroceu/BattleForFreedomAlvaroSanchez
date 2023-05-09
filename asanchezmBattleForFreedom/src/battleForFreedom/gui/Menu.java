@@ -60,13 +60,15 @@ public class Menu {
             } while ((opcion == 1) && (unidadesPreparadas == 0));
 
             switch (opcion) {
-                //Falta por poner los break
                 case 1:
                     menuAtaque(partida.getJugadorActual(), partida.getEscenario());
+                    break;
                 case 2:
                     menuMover(partida.getJugadorActual(), partida.getEscenario());
+                    break;
                 case 3:
                     menuComprar(partida);
+                    break;
             }
 
             partida.pasarTurno();
