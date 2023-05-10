@@ -3,6 +3,7 @@ package battleForFreedom.modelo.propio;
 import battleForFreedom.excepciones.AtaqueException;
 import battleForFreedom.excepciones.CasillaOcupadaException;
 import battleForFreedom.excepciones.EnergiaMovimientoException;
+import battleForFreedom.excepciones.FueraMapaException;
 import battleForFreedom.excepciones.PuntosInsuficientesException;
 import battleForFreedom.excepciones.UnidadIncompletaException;
 import battleForFreedom.modelo.escenarios.Escenario;
@@ -64,7 +65,7 @@ public class Jugador {
      * @throws battleForFreedom.excepciones.AtaqueException
      * @throws battleForFreedom.excepciones.UnidadIncompletaException
      */
-    public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad) throws AtaqueException, UnidadIncompletaException {
+    public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad) throws AtaqueException, UnidadIncompletaException, FueraMapaException {
         int puntosActuales = this.equipo.getPuntosDisponibles();
         int puntosGanados = unidad.atacar(coordenadaAtaque, escenario);
         int puntosFinales = puntosActuales + puntosGanados;
@@ -85,7 +86,7 @@ public class Jugador {
      * @throws battleForFreedom.excepciones.CasillaOcupadaException
      * @throws battleForFreedom.excepciones.UnidadIncompletaException
      */
-    public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, CasillaOcupadaException, UnidadIncompletaException {
+    public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, CasillaOcupadaException, UnidadIncompletaException, FueraMapaException {
         unidad.mover(escenario);
     }
 

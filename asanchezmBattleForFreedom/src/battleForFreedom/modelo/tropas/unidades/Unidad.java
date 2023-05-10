@@ -3,6 +3,7 @@ package battleForFreedom.modelo.tropas.unidades;
 import battleForFreedom.excepciones.AtaqueException;
 import battleForFreedom.excepciones.CasillaOcupadaException;
 import battleForFreedom.excepciones.EnergiaMovimientoException;
+import battleForFreedom.excepciones.FueraMapaException;
 import battleForFreedom.excepciones.PuntosInsuficientesException;
 import battleForFreedom.excepciones.UnidadIncompletaException;
 import battleForFreedom.modelo.escenarios.Escenario;
@@ -74,7 +75,12 @@ public abstract class Unidad {
      * @throws battleForFreedom.excepciones.UnidadIncompletaException
      *
      */
-    public int atacar(Coordenada ataque, Escenario escenario) throws AtaqueException, UnidadIncompletaException {
+    public int atacar(Coordenada ataque, Escenario escenario) throws AtaqueException, UnidadIncompletaException, FueraMapaException {
+
+        if (escenario.fueraMapa(ataque)) {
+            throw new FueraMapaException();
+        }
+
         int puntosGanados = 0;
         if (!this.unidadCompleta()) {
             throw new UnidadIncompletaException();
@@ -183,7 +189,7 @@ public abstract class Unidad {
      * la que se pretende mover ya esta ocupada
      * @throws battleForFreedom.excepciones.UnidadIncompletaException
      */
-    public void mover(Escenario escenario) throws EnergiaMovimientoException, CasillaOcupadaException, UnidadIncompletaException {
+    public void mover(Escenario escenario) throws EnergiaMovimientoException, CasillaOcupadaException, UnidadIncompletaException, FueraMapaException {
 
         if (!this.unidadCompleta()) {
             throw new UnidadIncompletaException();
@@ -194,6 +200,10 @@ public abstract class Unidad {
             nuevaPosicion = new Coordenada(escenario);
         } else {
             nuevaPosicion = establecerCoordenadaMovimiento();
+        }
+
+        if (escenario.fueraMapa(nuevaPosicion)) {
+            throw new FueraMapaException();
         }
 
         int horizontal = Math.abs(this.posicion.getX() - nuevaPosicion.getX());

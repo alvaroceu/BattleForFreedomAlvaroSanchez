@@ -3,6 +3,7 @@ package battleForFreedom.gui;
 import battleForFreedom.excepciones.AtaqueException;
 import battleForFreedom.excepciones.CasillaOcupadaException;
 import battleForFreedom.excepciones.EnergiaMovimientoException;
+import battleForFreedom.excepciones.FueraMapaException;
 import battleForFreedom.excepciones.PuntosInsuficientesException;
 import battleForFreedom.excepciones.UnidadIncompletaException;
 import battleForFreedom.modelo.escenarios.Escenario;
@@ -137,6 +138,9 @@ public class Menu {
                 }
             } catch (UnidadIncompletaException ex) {
                 //Debido a la implementacion de este método, nunca saltará esta excepción
+            } catch (FueraMapaException ex) {
+                System.out.println("La coordenada estaba fuera del mapa. Debe escoger otra");
+                repetir = true;
             }
         } while (repetir);
 
@@ -186,6 +190,8 @@ public class Menu {
                 repetir = true;
             } catch (UnidadIncompletaException ex) {
                 //Debido a la implementacion de este método, nunca saltará esta excepción
+            } catch (FueraMapaException ex) {
+                repetir = true;
             }
         } while (repetir);
 

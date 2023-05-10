@@ -78,4 +78,22 @@ public abstract class Escenario {
         this.dimensionEscenario[coordenada.getX()][coordenada.getY()] = null;
     }
 
+    /**
+     * Este metodo determina si una coordenada esta dentro o fuera del mapa
+     *
+     * @param coordenada
+     * @return true si la coordenada esta fuera del mapa
+     */
+    public Boolean fueraMapa(Coordenada coordenada) {
+        Boolean resultado = false;
+
+        if ((coordenada.getX() < 0)
+                || (coordenada.getY() < 0)
+                || (coordenada.getX() > this.posicionMaxima)
+                || (coordenada.getY() > this.posicionMaxima)) {
+            resultado = true;
+        }
+        return resultado;
+    }
+
 }
