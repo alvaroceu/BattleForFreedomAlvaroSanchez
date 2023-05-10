@@ -262,40 +262,31 @@ public abstract class Unidad {
      */
     public Coordenada generarCoordenadaMovimiento(int maximoMovimiento) {
 
-        int xActual = this.posicion.getX();
-        int yActual = this.posicion.getY();
-        Random r = new Random();
-        int eleccion;
+        int xActual;
+        int yActual;
 
-        //Obligamos a que se mueva al menos una casilla en direccion x o y
-        eleccion = r.nextInt(4);
-        if (eleccion == 0) {
-            xActual++;
-        } else if (eleccion == 1) {
-            yActual++;
-        } else if (eleccion == 2) {
-            xActual--;
-        } else {
-            yActual--;
-        }
+        do {
+            xActual = this.posicion.getX();
+            yActual = this.posicion.getY();
+            Random r = new Random();
+            int eleccion;
 
-        //Ahora puede moverse o no, de forma aleatoria
-        //Hasta que maximoMovimiento > 1 ya que ya se ha movido 1 casilla al llegar al bucle
-        for (int i = maximoMovimiento; i > 1; i--) {
+            for (int i = maximoMovimiento; i > 0; i--) {
 
-            eleccion = r.nextInt(5);
+                eleccion = r.nextInt(5);
 
-            if (eleccion == 0) {
-                xActual++;
-            } else if (eleccion == 1) {
-                yActual++;
-            } else if (eleccion == 2) {
-                xActual--;
-            } else if (eleccion == 3) {
-                yActual--;
+                if (eleccion == 0) {
+                    xActual++;
+                } else if (eleccion == 1) {
+                    yActual++;
+                } else if (eleccion == 2) {
+                    xActual--;
+                } else if (eleccion == 3) {
+                    yActual--;
+                }
+
             }
-
-        }
+        } while ((xActual == this.posicion.getX()) && (yActual == this.posicion.getY()));
 
         return new Coordenada(xActual, yActual);
     }
