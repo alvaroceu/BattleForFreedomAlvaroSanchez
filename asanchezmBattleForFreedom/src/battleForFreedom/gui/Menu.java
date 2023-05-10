@@ -59,7 +59,7 @@ public class Menu {
                 if (((opcion == 1) || (opcion == 2)) && (unidadesPreparadas == 0)) {
                     System.out.println("Aun no tienes unidades preparadas, debes comprar");
                 }
-            } while ((opcion == 1) && (unidadesPreparadas == 0));
+            } while (((opcion == 1) || (opcion == 2)) && (unidadesPreparadas == 0));
 
             switch (opcion) {
                 case 1:
