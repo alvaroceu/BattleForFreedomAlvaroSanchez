@@ -268,24 +268,31 @@ public abstract class Unidad {
         int eleccion;
 
         //Obligamos a que se mueva al menos una casilla en direccion x o y
-        eleccion = r.nextInt(2);
+        eleccion = r.nextInt(4);
         if (eleccion == 0) {
             xActual++;
-        } else {
+        } else if (eleccion == 1) {
             yActual++;
+        } else if (eleccion == 2) {
+            xActual--;
+        } else {
+            yActual--;
         }
 
         //Ahora puede moverse o no, de forma aleatoria
         //Hasta que maximoMovimiento > 1 ya que ya se ha movido 1 casilla al llegar al bucle
         for (int i = maximoMovimiento; i > 1; i--) {
 
-            eleccion = r.nextInt(3);
+            eleccion = r.nextInt(5);
 
             if (eleccion == 0) {
                 xActual++;
-            }
-            if (eleccion == 1) {
+            } else if (eleccion == 1) {
                 yActual++;
+            } else if (eleccion == 2) {
+                xActual--;
+            } else if (eleccion == 3) {
+                yActual--;
             }
 
         }
