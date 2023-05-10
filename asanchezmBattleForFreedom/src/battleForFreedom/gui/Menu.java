@@ -33,7 +33,7 @@ public class Menu {
         Boolean jugadoresPreparados = false;
 
         do {
-            System.out.println("Turno de jugador: " + partida.getJugadorActual() + "\n"
+            System.out.println("\n------TURNO DE: " + partida.getJugadorActual() + "------\n"
                     + "¿Qué deseas hacer?\n\n"
                     + "1-Atacar\n"
                     + "2-Mover una unidad\n"
@@ -88,7 +88,7 @@ public class Menu {
 
     private static void menuAtaque(Jugador jugador, Escenario escenario) {
 
-        System.out.println("Has escogido atacar. ¿Qué unidad atacará?\n\n");
+        System.out.println("Has escogido atacar. ¿Que unidad va a atacar?\n\n");
 
         int indiceUnidad = 1;
         for (Unidad unidad : jugador.getUnidadesJugador()) {
@@ -132,7 +132,7 @@ public class Menu {
             } catch (AtaqueException ex) {
                 System.out.println(ex);
                 if ("Fuera de rango".equals(ex.getMotivo())) {
-                    System.out.println("Debe escoger una coordenada válida para el ataque");
+                    System.out.println("Debe escoger una coordenada valida para el ataque");
                     repetir = true;
                 }
             } catch (UnidadIncompletaException ex) {
@@ -144,7 +144,7 @@ public class Menu {
 
     private static void menuMover(Jugador jugador, Escenario escenario) {
 
-        System.out.println("Has escogido mover. ¿Qué unidad se movera?\n\n");
+        System.out.println("Has escogido mover. ¿Que unidad se movera?\n\n");
 
         int indiceUnidad = 1;
         for (Unidad unidad : jugador.getUnidadesJugador()) {
@@ -243,6 +243,7 @@ public class Menu {
                 if (opcion == 2) {
 
                     int indiceUnidad = 1;
+                    System.out.println("¿Sobre que unidad quieres los seres?");
                     for (Unidad unidad : partida.getJugadorActual().getUnidadesJugador()) {
                         if (!unidad.unidadCompleta()) {
                             System.out.println(indiceUnidad + "-" + unidad);
