@@ -166,7 +166,7 @@ public abstract class Unidad {
         if ((coordenada.getX() < (this.posicion.getX() - maximoRango))
                 || (coordenada.getX() > (this.posicion.getX() + maximoRango))
                 || (coordenada.getY() < (this.posicion.getY() - maximoRango))
-                || (coordenada.getY() > (this.posicion.getX() + maximoRango))) {
+                || (coordenada.getY() > (this.posicion.getY() + maximoRango))) {
             rango = false;
         }
 
