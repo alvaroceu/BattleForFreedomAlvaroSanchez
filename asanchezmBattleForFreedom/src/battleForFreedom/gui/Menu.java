@@ -251,48 +251,53 @@ public class Menu {
                     }
                     System.out.println("\n");
 
-                    int unidadEscogida;
-                    do {
-                        unidadEscogida = leerEntero("Introduce tu opcion: ");
-                        if ((unidadEscogida < 1) || (unidadEscogida > (indiceUnidad - 1))) {
-                            System.out.println("La opcion escogida no existe, repite\n");
-                        }
-                    } while ((unidadEscogida < 1) || (unidadEscogida > (indiceUnidad - 1)));
+                    if (indiceUnidad == 1) {
+                        System.out.println("No tienes unidades vacias sobre las que comprar seres");
+                    } else {
+                        int unidadEscogida;
+                        do {
+                            unidadEscogida = leerEntero("Introduce tu opcion: ");
+                            if ((unidadEscogida < 1) || (unidadEscogida > (indiceUnidad - 1))) {
+                                System.out.println("La opcion escogida no existe, repite\n");
+                            }
+                        } while ((unidadEscogida < 1) || (unidadEscogida > (indiceUnidad - 1)));
 
-                    Unidad unidadBajoSer = null;
-                    int indiceUnidad2 = 1;
-                    for (Unidad unidad : partida.getJugadorActual().getUnidadesJugador()) {
-                        if (!unidad.unidadCompleta()) {
-                            indiceUnidad2++;
+                        Unidad unidadBajoSer = null;
+                        int indiceUnidad2 = 1;
+                        for (Unidad unidad : partida.getJugadorActual().getUnidadesJugador()) {
+                            if (!unidad.unidadCompleta()) {
+                                indiceUnidad2++;
+                            }
+                            if (indiceUnidad2 == indiceUnidad) {
+                                unidadBajoSer = unidad;
+                            }
                         }
-                        if (indiceUnidad2 == indiceUnidad) {
-                            unidadBajoSer = unidad;
+
+                        ///////////////// HASTA AQUI SE HA ELEGIDO LA UNIDAD////////////////////
+                        System.out.println("¿Que ser deseas comprar?\n"
+                                + "Tu dinero: " + partida.getJugadorActual().getPuntos() + "\n\n"
+                                + "1-Artillero (50)\n"
+                                + "2-Comandante de SecOps (100)\n");
+
+                        int serAComprar;
+                        do {
+                            serAComprar = leerEntero("Introduce tu opcion: ");
+                            if ((serAComprar < 1) || (serAComprar > 2)) {
+                                System.out.println("La opcion escogida no existe, repite\n");
+                            }
+                        } while ((serAComprar < 1) || (serAComprar > 2));
+
+                        try {
+                            if (serAComprar == 1) {
+                                partida.getJugadorActual().comprarSer(unidadBajoSer, new Artillero(), partida.getEscenario());
+                            } else if (serAComprar == 2) {
+                                partida.getJugadorActual().comprarSer(unidadBajoSer, new ComandanteDeSecOps(), partida.getEscenario());
+                            }
+                        } catch (PuntosInsuficientesException ex) {
+                            System.out.println("No tienes dinero suficiente para comprar ese ser");
                         }
                     }
 
-                    ///////////////// HASTA AQUI SE HA ELEGIDO LA UNIDAD////////////////////
-                    System.out.println("¿Que ser deseas comprar?\n"
-                            + "Tu dinero: " + partida.getJugadorActual().getPuntos() + "\n\n"
-                            + "1-Artillero (50)\n"
-                            + "2-Comandante de SecOps (100)\n");
-
-                    int serAComprar;
-                    do {
-                        serAComprar = leerEntero("Introduce tu opcion: ");
-                        if ((serAComprar < 1) || (serAComprar > 2)) {
-                            System.out.println("La opcion escogida no existe, repite\n");
-                        }
-                    } while ((serAComprar < 1) || (serAComprar > 2));
-
-                    try {
-                        if (serAComprar == 1) {
-                            partida.getJugadorActual().comprarSer(unidadBajoSer, new Artillero(), partida.getEscenario());
-                        } else if (serAComprar == 2) {
-                            partida.getJugadorActual().comprarSer(unidadBajoSer, new ComandanteDeSecOps(), partida.getEscenario());
-                        }
-                    } catch (PuntosInsuficientesException ex) {
-                        System.out.println("No tienes dinero suficiente para comprar ese ser");
-                    }
                 }
             }
 
@@ -353,48 +358,53 @@ public class Menu {
                     }
                     System.out.println("\n");
 
-                    int unidadEscogida;
-                    do {
-                        unidadEscogida = leerEntero("Introduce tu opcion: ");
-                        if ((unidadEscogida < 1) || (unidadEscogida > (indiceUnidad - 1))) {
-                            System.out.println("La opcion escogida no existe, repite\n");
-                        }
-                    } while ((unidadEscogida < 1) || (unidadEscogida > (indiceUnidad - 1)));
+                    if (indiceUnidad == 1) {
+                        System.out.println("No tienes unidades vacias sobre las que comprar seres");
+                    } else {
+                        int unidadEscogida;
+                        do {
+                            unidadEscogida = leerEntero("Introduce tu opcion: ");
+                            if ((unidadEscogida < 1) || (unidadEscogida > (indiceUnidad - 1))) {
+                                System.out.println("La opcion escogida no existe, repite\n");
+                            }
+                        } while ((unidadEscogida < 1) || (unidadEscogida > (indiceUnidad - 1)));
 
-                    Unidad unidadBajoSer = null;
-                    int indiceUnidad2 = 1;
-                    for (Unidad unidad : partida.getJugadorActual().getUnidadesJugador()) {
-                        if (!unidad.unidadCompleta()) {
-                            indiceUnidad2++;
+                        Unidad unidadBajoSer = null;
+                        int indiceUnidad2 = 1;
+                        for (Unidad unidad : partida.getJugadorActual().getUnidadesJugador()) {
+                            if (!unidad.unidadCompleta()) {
+                                indiceUnidad2++;
+                            }
+                            if (indiceUnidad2 == indiceUnidad) {
+                                unidadBajoSer = unidad;
+                            }
                         }
-                        if (indiceUnidad2 == indiceUnidad) {
-                            unidadBajoSer = unidad;
+
+                        ///////////////// HASTA AQUI SE HA ELEGIDO LA UNIDAD////////////////////
+                        System.out.println("¿Que ser deseas comprar?\n"
+                                + "Tu dinero: " + partida.getJugadorActual().getPuntos() + "\n\n"
+                                + "1-Omaticaya (100)\n"
+                                + "2-Tipani (50)\n");
+
+                        int serAComprar;
+                        do {
+                            serAComprar = leerEntero("Introduce tu opcion: ");
+                            if ((serAComprar < 1) || (serAComprar > 2)) {
+                                System.out.println("La opcion escogida no existe, repite\n");
+                            }
+                        } while ((serAComprar < 1) || (serAComprar > 2));
+
+                        try {
+                            if (serAComprar == 1) {
+                                partida.getJugadorActual().comprarSer(unidadBajoSer, new Omaticaya(), partida.getEscenario());
+                            } else if (serAComprar == 2) {
+                                partida.getJugadorActual().comprarSer(unidadBajoSer, new Tipani(), partida.getEscenario());
+                            }
+                        } catch (PuntosInsuficientesException ex) {
+                            System.out.println("No tienes dinero suficiente para comprar ese ser");
                         }
                     }
 
-                    ///////////////// HASTA AQUI SE HA ELEGIDO LA UNIDAD////////////////////
-                    System.out.println("¿Que ser deseas comprar?\n"
-                            + "Tu dinero: " + partida.getJugadorActual().getPuntos() + "\n\n"
-                            + "1-Omaticaya (100)\n"
-                            + "2-Tipani (50)\n");
-
-                    int serAComprar;
-                    do {
-                        serAComprar = leerEntero("Introduce tu opcion: ");
-                        if ((serAComprar < 1) || (serAComprar > 2)) {
-                            System.out.println("La opcion escogida no existe, repite\n");
-                        }
-                    } while ((serAComprar < 1) || (serAComprar > 2));
-
-                    try {
-                        if (serAComprar == 1) {
-                            partida.getJugadorActual().comprarSer(unidadBajoSer, new Omaticaya(), partida.getEscenario());
-                        } else if (serAComprar == 2) {
-                            partida.getJugadorActual().comprarSer(unidadBajoSer, new Tipani(), partida.getEscenario());
-                        }
-                    } catch (PuntosInsuficientesException ex) {
-                        System.out.println("No tienes dinero suficiente para comprar ese ser");
-                    }
                 }
             }
 
