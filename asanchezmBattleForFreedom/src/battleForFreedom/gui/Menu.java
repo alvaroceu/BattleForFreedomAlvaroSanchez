@@ -18,7 +18,7 @@ import battleForFreedom.modelo.tropas.unidades.Unidad;
 import battleForFreedom.modelo.tropas.unidades.humanas.AT99Escorpion;
 import battleForFreedom.modelo.tropas.unidades.humanas.AerospatialeSA2Samson;
 import battleForFreedom.modelo.tropas.unidades.humanas.PlataformaMovilidadAmplificadaMitsubishiMK6;
-import battleForFreedom.modelo.tropas.unidades.navi.BansheeDeMontaña;
+import battleForFreedom.modelo.tropas.unidades.navi.Banshee;
 import battleForFreedom.modelo.tropas.unidades.navi.Thanator;
 import battleForFreedom.modelo.tropas.unidades.navi.TitanothereCabezamartillo;
 import static battleForFreedom.utiles.Utiles.leerEntero;
@@ -342,7 +342,7 @@ public class Menu {
 
                     try {
                         if (unidadAComprar == 1) {
-                            partida.getJugadorActual().comprarUnidad(new BansheeDeMontaña(), partida.getEscenario());
+                            partida.getJugadorActual().comprarUnidad(new Banshee(), partida.getEscenario());
                         } else if (unidadAComprar == 2) {
                             partida.getJugadorActual().comprarUnidad(new Thanator(), partida.getEscenario());
                         } else if (unidadAComprar == 3) {

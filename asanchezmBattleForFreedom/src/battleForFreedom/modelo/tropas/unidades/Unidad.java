@@ -11,7 +11,7 @@ import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.funcionamiento.Raza;
 import battleForFreedom.modelo.tropas.seres.Ser;
 import battleForFreedom.modelo.tropas.unidades.humanas.PlataformaMovilidadAmplificadaMitsubishiMK6;
-import battleForFreedom.modelo.tropas.unidades.navi.BansheeDeMontaña;
+import battleForFreedom.modelo.tropas.unidades.navi.Banshee;
 import java.util.Random;
 
 /**
@@ -196,7 +196,7 @@ public abstract class Unidad {
         }
 
         Coordenada nuevaPosicion = null;
-        if (this instanceof BansheeDeMontaña) {
+        if (this instanceof Banshee) {
             nuevaPosicion = new Coordenada(escenario);
         } else {
             nuevaPosicion = establecerCoordenadaMovimiento();

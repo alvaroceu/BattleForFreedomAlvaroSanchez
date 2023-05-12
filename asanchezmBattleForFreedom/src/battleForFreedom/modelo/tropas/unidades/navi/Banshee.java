@@ -7,9 +7,9 @@ import battleForFreedom.modelo.tropas.unidades.UnidadNavi;
  *
  * @author Alvaro
  */
-public class BansheeDeMontaña extends UnidadNavi {
+public class Banshee extends UnidadNavi {
 
-    public BansheeDeMontaña() {
+    public Banshee() {
         super(2000, 8000, 3500, 3500, 300, 1000, 2, 10);
     }
 
