@@ -182,6 +182,7 @@ public class Menu {
         do {
             try {
                 jugador.moverUnidad(escenario, unidadMovida);
+                repetir = false;
             } catch (EnergiaMovimientoException ex) {
                 if (ex.quedaEnergia()) {
                     repetir = true;
