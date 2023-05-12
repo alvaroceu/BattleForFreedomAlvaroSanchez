@@ -19,7 +19,8 @@ import java.util.ArrayList;
 public class Jugador {
 
     private String ID;
-    private Equipo equipo;
+    private int puntosDisponibles;
+    private ArrayList<Unidad> ejercito;
 
     /**
      * Constructor de objetos de clase Jugador
@@ -27,28 +28,37 @@ public class Jugador {
      * @param Id Nombre o identificación del jugador
      * @param escenario
      */
-    public Jugador(String Id, Escenario escenario) {
+    public Jugador(String Id, Escenario escenario, int puntosDisponibles) {
         this.ID = Id;
-        this.equipo = new Equipo(escenario.getPuntosIniciales());
+        this.puntosDisponibles = puntosDisponibles;
+        this.ejercito = new ArrayList();
     }
 
     /**
-     * Este método permite acceder a la lista de unidades del jugador, usado en
-     * la interfaz para los diferentes métodos que la componen
+     * Permite obtener la lista de Unidades del ejército de cada equipo.
      *
-     * @return lista de unidades del jugador
+     * @return Lista de unidades
      */
-    public ArrayList<Unidad> getUnidadesJugador() {
-        return this.equipo.getEjercito().getUnidades();
+    public ArrayList<Unidad> getEjercito() {
+        return ejercito;
     }
 
     /**
-     * Permite obtener los puntos de los que dispone el jugador
+     * Permite modificar los puntos disponibles de un jugador
+     *
+     * @param puntosDisponibles Nuevo valor de los puntos disponibles
+     */
+    public void setPuntosDisponibles(int puntosDisponibles) {
+        this.puntosDisponibles = puntosDisponibles;
+    }
+
+    /**
+     * Permite obtener los puntos del jugador
      *
      * @return puntos en cuestión
      */
     public int getPuntos() {
-        return this.equipo.getPuntosDisponibles();
+        return this.puntosDisponibles;
     }
 
     /**
@@ -66,10 +76,10 @@ public class Jugador {
      * @throws battleForFreedom.excepciones.UnidadIncompletaException
      */
     public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad) throws AtaqueException, UnidadIncompletaException, FueraMapaException {
-        int puntosActuales = this.equipo.getPuntosDisponibles();
+        int puntosActuales = this.puntosDisponibles;
         int puntosGanados = unidad.atacar(coordenadaAtaque, escenario);
         int puntosFinales = puntosActuales + puntosGanados;
-        this.equipo.setPuntosDisponibles(puntosFinales);
+        this.setPuntosDisponibles(puntosFinales);
     }
 
     /**
@@ -101,9 +111,9 @@ public class Jugador {
      * @throws PuntosInsuficientesException
      */
     public void comprarUnidad(Unidad unidadAComprar, Escenario escenario) throws PuntosInsuficientesException {
-        int nuevosPuntos = unidadAComprar.compraDeUnidad(this.equipo.getPuntosDisponibles(), escenario);
-        this.equipo.setPuntosDisponibles(nuevosPuntos);
-        this.equipo.getEjercito().getUnidades().add(unidadAComprar);
+        int nuevosPuntos = unidadAComprar.compraDeUnidad(this.puntosDisponibles, escenario);
+        this.setPuntosDisponibles(nuevosPuntos);
+        this.ejercito.add(unidadAComprar);
     }
 
     /**
@@ -118,8 +128,8 @@ public class Jugador {
      * @throws PuntosInsuficientesException
      */
     public void comprarSer(Unidad unidadBajoSeres, Ser serAComprar, Escenario escenario) throws PuntosInsuficientesException {
-        int nuevosPuntos = serAComprar.compraDeSer(this.equipo.getPuntosDisponibles(), escenario);
-        this.equipo.setPuntosDisponibles(nuevosPuntos);
+        int nuevosPuntos = serAComprar.compraDeSer(this.puntosDisponibles, escenario);
+        this.setPuntosDisponibles(nuevosPuntos);
         Boolean unidadCompleta = unidadBajoSeres.añadirSer(serAComprar);
 
         if (unidadCompleta) {

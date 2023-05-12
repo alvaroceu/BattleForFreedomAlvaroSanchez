@@ -39,7 +39,7 @@ public class Partida {
      * @param jugadorNavi nombre del jugador navi.
      */
     public Partida(Escenario escenarioPartida, String jugadorHumano, String jugadorNavi) {
-        this(new Jugador(jugadorHumano, escenarioPartida), new Jugador(jugadorNavi, escenarioPartida), escenarioPartida);
+        this(new Jugador(jugadorHumano, escenarioPartida, escenarioPartida.getPuntosIniciales()), new Jugador(jugadorNavi, escenarioPartida, escenarioPartida.getPuntosIniciales()), escenarioPartida);
     }
 
     /**
@@ -73,10 +73,10 @@ public class Partida {
      */
     public void setGanador() {
 
-        if (this.jugador1.getUnidadesJugador().isEmpty()) {
+        if (this.jugador1.getEjercito().isEmpty()) {
             this.ganador = this.jugador2;
         }
-        if (this.jugador2.getUnidadesJugador().isEmpty()) {
+        if (this.jugador2.getEjercito().isEmpty()) {
             this.ganador = this.jugador1;
         }
 

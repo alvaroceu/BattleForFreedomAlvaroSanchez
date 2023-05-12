@@ -51,7 +51,7 @@ public class Menu {
                 } while ((opcion < 1) || (opcion > 3));
 
                 unidadesPreparadas = 0;
-                for (Unidad unidad : partida.getJugadorActual().getUnidadesJugador()) {
+                for (Unidad unidad : partida.getJugadorActual().getEjercito()) {
                     if (unidad.unidadCompleta()) {
                         unidadesPreparadas++;
                     }
@@ -75,7 +75,7 @@ public class Menu {
             }
 
             if (jugadoresPreparados == false) {
-                if ((partida.getJugadorHumano().getUnidadesJugador().isEmpty()) || (partida.getJugadorNavi().getUnidadesJugador().isEmpty())) {
+                if ((partida.getJugadorHumano().getEjercito().isEmpty()) || (partida.getJugadorNavi().getEjercito().isEmpty())) {
                 } else {
                     jugadoresPreparados = true;
                 }
@@ -92,7 +92,7 @@ public class Menu {
         System.out.println("Has escogido atacar. ¿Que unidad va a atacar?\n\n");
 
         int indiceUnidad = 1;
-        for (Unidad unidad : jugador.getUnidadesJugador()) {
+        for (Unidad unidad : jugador.getEjercito()) {
             if (unidad.unidadCompleta()) {
                 System.out.println(indiceUnidad + "-" + unidad);
                 indiceUnidad++;
@@ -110,7 +110,7 @@ public class Menu {
 
         Unidad unidadAtacante = null;
         int indiceUnidad2 = 1;
-        for (Unidad unidad : jugador.getUnidadesJugador()) {
+        for (Unidad unidad : jugador.getEjercito()) {
             if (unidad.unidadCompleta()) {
                 indiceUnidad2++;
             }
@@ -151,7 +151,7 @@ public class Menu {
         System.out.println("Has escogido mover. ¿Que unidad se movera?\n\n");
 
         int indiceUnidad = 1;
-        for (Unidad unidad : jugador.getUnidadesJugador()) {
+        for (Unidad unidad : jugador.getEjercito()) {
             if (unidad.unidadCompleta()) {
                 System.out.println(indiceUnidad + "-" + unidad);
                 indiceUnidad++;
@@ -169,7 +169,7 @@ public class Menu {
 
         Unidad unidadMovida = null;
         int indiceUnidad2 = 1;
-        for (Unidad unidad : jugador.getUnidadesJugador()) {
+        for (Unidad unidad : jugador.getEjercito()) {
             if (unidad.unidadCompleta()) {
                 indiceUnidad2++;
             }
@@ -250,7 +250,7 @@ public class Menu {
 
                     int indiceUnidad = 1;
                     System.out.println("¿Sobre que unidad quieres los seres?");
-                    for (Unidad unidad : partida.getJugadorActual().getUnidadesJugador()) {
+                    for (Unidad unidad : partida.getJugadorActual().getEjercito()) {
                         if (!unidad.unidadCompleta()) {
                             System.out.println(indiceUnidad + "-" + unidad);
                             indiceUnidad++;
@@ -271,7 +271,7 @@ public class Menu {
 
                         Unidad unidadBajoSer = null;
                         int indiceUnidad2 = 1;
-                        for (Unidad unidad : partida.getJugadorActual().getUnidadesJugador()) {
+                        for (Unidad unidad : partida.getJugadorActual().getEjercito()) {
                             if (!unidad.unidadCompleta()) {
                                 indiceUnidad2++;
                             }
@@ -357,7 +357,7 @@ public class Menu {
                 if (opcion == 2) {
 
                     int indiceUnidad = 1;
-                    for (Unidad unidad : partida.getJugadorActual().getUnidadesJugador()) {
+                    for (Unidad unidad : partida.getJugadorActual().getEjercito()) {
                         if (!unidad.unidadCompleta()) {
                             System.out.println(indiceUnidad + "-" + unidad);
                             indiceUnidad++;
@@ -378,7 +378,7 @@ public class Menu {
 
                         Unidad unidadBajoSer = null;
                         int indiceUnidad2 = 1;
-                        for (Unidad unidad : partida.getJugadorActual().getUnidadesJugador()) {
+                        for (Unidad unidad : partida.getJugadorActual().getEjercito()) {
                             if (!unidad.unidadCompleta()) {
                                 indiceUnidad2++;
                             }
