@@ -12,6 +12,7 @@ import battleForFreedom.modelo.funcionamiento.Raza;
 import battleForFreedom.modelo.tropas.seres.Ser;
 import battleForFreedom.modelo.tropas.unidades.humanas.PlataformaMovilidadAmplificadaMitsubishiMK6;
 import battleForFreedom.modelo.tropas.unidades.navi.Banshee;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -27,7 +28,8 @@ public abstract class Unidad {
     private int potenciaAtaque;
     private int puntosAnulado;
     private Coordenada posicion;
-    private Ser[] seresUnidad;
+    private ArrayList<Ser> seresUnidad;
+    private int numeroSeres;
     private Boolean unidadAnulada;
     private int gastoEnergia;
     private Raza raza;
@@ -42,12 +44,11 @@ public abstract class Unidad {
      * @param potenciaAtaque Cantidad que se resta de energia de ataque y
      * defensa
      * @param puntosAnulado Puntos que recibe el jugador que elimina la unidad
-     * @param numeroSeres Numero de seres que controlan la unidad
      * @param gastoEnergia Energia gastada al moverse
      * @param raza Raza de la unidad (humano, navi)
      *
      */
-    public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, int numeroSeres, int gastoEnergia, Raza raza) {
+    public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, int gastoEnergia, Raza raza, int numeroSeres) {
         this.costeUnidad = costeUnidad;
         this.energiaAtaque = energiaAtaque;
         this.energiaDefensa = energiaDefensa;
@@ -55,10 +56,11 @@ public abstract class Unidad {
         this.potenciaAtaque = potenciaAtaque;
         this.puntosAnulado = puntosAnulado;
         this.posicion = null;
-        this.seresUnidad = new Ser[numeroSeres];
+        this.seresUnidad = new ArrayList();
         this.gastoEnergia = gastoEnergia;
         this.unidadAnulada = false;
         this.raza = raza;
+        this.numeroSeres = numeroSeres;
     }
 
     /**
@@ -122,20 +124,20 @@ public abstract class Unidad {
             this.energiaDefensa = this.energiaDefensa - potenciaAtaque;
             System.out.println("Se ha atacado la posicion " + this.posicion + " donde habia un(a)"); //falta implementar el tipo de unidad
         } else {
-            float daño = ((float) potenciaAtaque - (float) this.energiaDefensa) / this.seresUnidad.length;
+            float daño = ((float) potenciaAtaque - (float) this.energiaDefensa) / this.seresUnidad.size();
             this.energiaDefensa = 0;
             int seresDerrotados = 0;
 
-            for (int numeroSer = this.seresUnidad.length - 1; numeroSer >= 0; numeroSer--) {
+            for (Ser ser : this.seresUnidad) {
 
-                if (this.seresUnidad[numeroSer].serDebePuntos(daño)) {
-                    puntosGanados = puntosGanados + this.seresUnidad[numeroSer].getPuntosAnulado();
+                if (ser.serDebePuntos(daño)) {
+                    puntosGanados = puntosGanados + ser.getPuntosAnulado();
                 }
-                if (this.seresUnidad[numeroSer].serDerrotado()) {
+                if (ser.serDerrotado()) {
                     seresDerrotados++;
                 }
             }
-            if (seresDerrotados == this.seresUnidad.length) {
+            if (seresDerrotados == this.seresUnidad.size()) {
                 puntosGanados = puntosGanados + this.puntosAnulado;
                 this.unidadAnulada = true;
             }
@@ -352,26 +354,20 @@ public abstract class Unidad {
      * ultimo ser
      */
     public Boolean añadirSer(Ser serAñadido) {
-        Boolean salirDelBucle = false;
-        for (int numeroSer = 0; numeroSer < this.seresUnidad.length; numeroSer++) {
-            if ((this.seresUnidad[numeroSer] == null) && (!salirDelBucle)) {
-                this.seresUnidad[numeroSer] = serAñadido;
-                salirDelBucle = true;
-            }
-        }
+        this.seresUnidad.add(serAñadido);
 
         return this.unidadCompleta();
     }
 
+    /**
+     * Permite saber si una unidad esta llena de seres o no
+     *
+     * @return true si esta completa
+     */
     public Boolean unidadCompleta() {
         Boolean unidadCompleta = false;
-        int numeroSeresColocados = 0;
-        for (int numeroSer = 0; numeroSer < this.seresUnidad.length; numeroSer++) {
-            if (this.seresUnidad[numeroSer] != null) {
-                numeroSeresColocados++;
-            }
-        }
-        if (numeroSeresColocados == this.seresUnidad.length) {
+
+        if (this.seresUnidad.size() == this.numeroSeres) {
             unidadCompleta = true;
         }
 
