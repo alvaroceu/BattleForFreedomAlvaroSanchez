@@ -49,6 +49,21 @@ public class Juego {
 
             if (partida.getGanador() != null) {
                 System.out.println("EL GANADOR ES: " + partida.getGanador());
+            } else {
+                System.out.println("¿Deseas guardar la partida?\n\n"
+                        + "1-Si\n"
+                        + "2-No\n");
+                int guardarOpcion;
+                do {
+                    guardarOpcion = leerEntero("Introduce tu opcion: ");
+                    if ((guardarOpcion < 1) || (guardarOpcion > 2)) {
+                        System.out.println("La opcion introducida no existe, repite.");
+                    }
+                } while ((guardarOpcion < 1) || (guardarOpcion > 2));
+
+                if (guardarOpcion == 1) {
+
+                }
             }
         }
 
