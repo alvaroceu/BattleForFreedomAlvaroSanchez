@@ -32,23 +32,26 @@ public class Menu {
     public static void menuPrincipal(Partida partida) {
 
         Boolean jugadoresPreparados = false;
+        Boolean salirDeJuego;
 
         do {
+            salirDeJuego = false;
             System.out.println("\n------TURNO DE: " + partida.getJugadorActual() + "------\n"
                     + "¿Qué deseas hacer?\n\n"
                     + "1-Atacar\n"
                     + "2-Mover una unidad\n"
-                    + "3-Comprar\n\n");
+                    + "3-Comprar\n"
+                    + "4-Salir del juego\n\n");
 
             int opcion;
             int unidadesPreparadas;
             do {
                 do {
                     opcion = leerEntero("Escoje tu opcion: ");
-                    if ((opcion < 1) || (opcion > 3)) {
+                    if ((opcion < 1) || (opcion > 4)) {
                         System.out.println("La opcion escogida no existe, repite\n");
                     }
-                } while ((opcion < 1) || (opcion > 3));
+                } while ((opcion < 1) || (opcion > 4));
 
                 unidadesPreparadas = 0;
                 for (Unidad unidad : partida.getJugadorActual().getEjercito()) {
@@ -72,6 +75,9 @@ public class Menu {
                 case 3:
                     menuComprar(partida);
                     break;
+                case 4:
+                    salirDeJuego = true;
+                    break;
             }
 
             if (jugadoresPreparados == false) {
@@ -83,8 +89,11 @@ public class Menu {
                 partida.setGanador();
             }
 
-            partida.pasarTurno();
-        } while (partida.getGanador() == null);
+            if (!salirDeJuego) {
+                partida.pasarTurno();
+            }
+
+        } while ((partida.getGanador() == null) && (!salirDeJuego));
     }
 
     private static void menuAtaque(Jugador jugador, Escenario escenario) {
