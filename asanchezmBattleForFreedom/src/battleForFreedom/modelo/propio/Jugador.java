@@ -6,6 +6,7 @@ import battleForFreedom.excepciones.EnergiaMovimientoException;
 import battleForFreedom.excepciones.FueraMapaException;
 import battleForFreedom.excepciones.PuntosInsuficientesException;
 import battleForFreedom.excepciones.UnidadIncompletaException;
+import battleForFreedom.modelo.Entidad;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.tropas.seres.Ser;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author Alvaro
  */
-public class Jugador {
+public class Jugador extends Entidad {
 
     private String ID;
     private int puntosDisponibles;

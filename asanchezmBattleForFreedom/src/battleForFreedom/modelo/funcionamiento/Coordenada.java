@@ -1,5 +1,6 @@
 package battleForFreedom.modelo.funcionamiento;
 
+import battleForFreedom.modelo.Entidad;
 import battleForFreedom.modelo.escenarios.Escenario;
 import java.util.Random;
 
@@ -7,7 +8,7 @@ import java.util.Random;
  *
  * @author Alvaro
  */
-public class Coordenada {
+public class Coordenada extends Entidad {
 
     private int x;
     private int y;

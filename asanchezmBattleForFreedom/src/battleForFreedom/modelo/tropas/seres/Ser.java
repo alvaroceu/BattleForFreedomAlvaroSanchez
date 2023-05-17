@@ -1,6 +1,7 @@
 package battleForFreedom.modelo.tropas.seres;
 
 import battleForFreedom.excepciones.PuntosInsuficientesException;
+import battleForFreedom.modelo.Entidad;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Raza;
 
@@ -8,7 +9,7 @@ import battleForFreedom.modelo.funcionamiento.Raza;
  *
  * @author Alvaro
  */
-public abstract class Ser {
+public abstract class Ser extends Entidad {
 
     private int costeSer;
     private Raza raza;

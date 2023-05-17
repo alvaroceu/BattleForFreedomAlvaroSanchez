@@ -1,5 +1,6 @@
 package battleForFreedom.modelo.escenarios;
 
+import battleForFreedom.modelo.Entidad;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.tropas.unidades.Unidad;
 
@@ -7,7 +8,7 @@ import battleForFreedom.modelo.tropas.unidades.Unidad;
  *
  * @author Alvaro
  */
-public abstract class Escenario {
+public abstract class Escenario extends Entidad {
 
     private int puntosIniciales;
     private Unidad[][] dimensionEscenario;

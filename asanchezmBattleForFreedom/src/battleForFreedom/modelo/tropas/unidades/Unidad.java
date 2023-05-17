@@ -6,6 +6,7 @@ import battleForFreedom.excepciones.EnergiaMovimientoException;
 import battleForFreedom.excepciones.FueraMapaException;
 import battleForFreedom.excepciones.PuntosInsuficientesException;
 import battleForFreedom.excepciones.UnidadIncompletaException;
+import battleForFreedom.modelo.Entidad;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.funcionamiento.Raza;
@@ -19,7 +20,7 @@ import java.util.Random;
  *
  * @author Alvaro
  */
-public abstract class Unidad {
+public abstract class Unidad extends Entidad {
 
     private int costeUnidad;
     private int energiaAtaque;

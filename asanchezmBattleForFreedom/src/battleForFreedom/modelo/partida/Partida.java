@@ -1,5 +1,6 @@
 package battleForFreedom.modelo.partida;
 
+import battleForFreedom.modelo.Entidad;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.propio.Jugador;
 
@@ -7,7 +8,7 @@ import battleForFreedom.modelo.propio.Jugador;
  *
  * @author Alvaro
  */
-public class Partida {
+public class Partida extends Entidad {
 
     private Jugador jugador1;
     private Jugador jugador2;
