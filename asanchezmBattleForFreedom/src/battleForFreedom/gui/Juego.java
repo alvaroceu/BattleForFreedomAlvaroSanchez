@@ -31,6 +31,8 @@ public class Juego {
                 if (partidasGuardadas == null) {
                     System.out.println("No se han encontrado partidas guardadas, debes crear una nueva");
                     guardadas = false;
+                } else {
+                    guardadas = true;
                 }
             }
             if (opcion == 2) {
