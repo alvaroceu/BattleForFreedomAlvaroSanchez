@@ -19,12 +19,25 @@ public class Juego {
         ArrayList<Partida> partidasGuardadas;
 
         int opcion;
+        Boolean guardadas = false;
         do {
             System.out.println("¿Quieres buscar partidas guardadas?\n\n"
                     + "1-Si\n"
                     + "2-No, crear nueva\n");
             opcion = leerEntero("Escoge tu opcion: ");
-        } while ((opcion < 1) || (opcion > 2));
+
+            if (opcion == 1) {
+                partidasGuardadas = (ArrayList<Partida>) DataStore.leerPartida();
+                if (partidasGuardadas == null) {
+                    System.out.println("No se han encontrado partidas guardadas, debes crear una nueva");
+                    guardadas = false;
+                }
+            }
+            if (opcion == 2) {
+                guardadas = true;
+            }
+
+        } while ((opcion < 1) || (opcion > 2) || (!guardadas));
 
         if (opcion == 2) {
             System.out.println("¿En que escenario deseas jugar?\n\n"
