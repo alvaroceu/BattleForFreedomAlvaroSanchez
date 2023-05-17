@@ -1,10 +1,12 @@
 package battleForFreedom.gui;
 
+import battleForFreedom.data.DataStore;
 import static battleForFreedom.gui.Menu.menuPrincipal;
 import battleForFreedom.modelo.escenarios.*;
 import battleForFreedom.modelo.partida.Partida;
 import static battleForFreedom.utiles.Utiles.leerCadena;
 import static battleForFreedom.utiles.Utiles.leerEntero;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,6 +15,8 @@ import static battleForFreedom.utiles.Utiles.leerEntero;
 public class Juego {
 
     public static void comenzarJuego() {
+
+        ArrayList<Partida> partidasGuardadas = new ArrayList();
 
         int opcion;
         do {
@@ -62,12 +66,51 @@ public class Juego {
                 } while ((guardarOpcion < 1) || (guardarOpcion > 2));
 
                 if (guardarOpcion == 1) {
-
+                    partidasGuardadas = (ArrayList<Partida>) DataStore.leerPartida();
+                    partidasGuardadas.add(partida);
+                    DataStore.escribirPartida(partidasGuardadas);
                 }
             }
         }
 
         if (opcion == 1) {
+            partidasGuardadas = (ArrayList<Partida>) DataStore.leerPartida();
+            int indicePartidas = 0;
+
+            for (Partida partidas : partidasGuardadas) {
+                indicePartidas++;
+                System.out.println(indicePartidas + "-" + partidas);
+            }
+            int elegirPartida;
+            do {
+                elegirPartida = leerEntero("Introduce tu opcion: ");
+                if ((elegirPartida < 1) || (elegirPartida > indicePartidas)) {
+                    System.out.println("La opcion introducida no existe, repite.");
+                }
+            } while ((elegirPartida < 1) || (elegirPartida > indicePartidas));
+            Partida partida = partidasGuardadas.get(elegirPartida - 1);
+            menuPrincipal(partida);
+
+            if (partida.getGanador() != null) {
+                System.out.println("EL GANADOR ES: " + partida.getGanador());
+            } else {
+                System.out.println("¿Deseas guardar la partida?\n\n"
+                        + "1-Si\n"
+                        + "2-No\n");
+                int guardarOpcion;
+                do {
+                    guardarOpcion = leerEntero("Introduce tu opcion: ");
+                    if ((guardarOpcion < 1) || (guardarOpcion > 2)) {
+                        System.out.println("La opcion introducida no existe, repite.");
+                    }
+                } while ((guardarOpcion < 1) || (guardarOpcion > 2));
+
+                if (guardarOpcion == 1) {
+                    partidasGuardadas = (ArrayList<Partida>) DataStore.leerPartida();
+                    partidasGuardadas.add(partida);
+                    DataStore.escribirPartida(partidasGuardadas);
+                }
+            }
 
         }
 
