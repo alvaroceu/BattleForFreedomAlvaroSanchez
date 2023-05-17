@@ -36,7 +36,7 @@ public class Menu {
 
         do {
             salirDeJuego = false;
-            System.out.println("\n------TURNO DE: " + partida.getJugadorActual() + "------\n"
+            System.out.println("\nTurno:" + partida.getTurno() + "\n------TURNO DE: " + partida.getJugadorActual() + "------\n"
                     + "¿Qué deseas hacer?\n\n"
                     + "1-Atacar\n"
                     + "2-Mover una unidad\n"
