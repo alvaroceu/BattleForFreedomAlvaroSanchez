@@ -68,6 +68,17 @@ public class Juego {
                 if (guardarOpcion == 1) {
                     partidasGuardadas = (ArrayList<Partida>) DataStore.leerPartida();
                     if (partidasGuardadas != null) {
+
+                        ArrayList<String> partidasEnDisco = new ArrayList();
+                        for (Partida partidas : partidasGuardadas) {
+                            partidasEnDisco.add(partidas.toString());
+                        }
+
+                        if (partidasEnDisco.contains(partida.toString())) {
+                            int indice = partidasEnDisco.indexOf(partida.toString());
+                            partidasGuardadas.remove(indice);
+                        }
+
                         partidasGuardadas.add(partida);
                     } else {
                         partidasGuardadas = new ArrayList();
@@ -113,6 +124,17 @@ public class Juego {
                 if (guardarOpcion == 1) {
                     partidasGuardadas = (ArrayList<Partida>) DataStore.leerPartida();
                     if (partidasGuardadas != null) {
+
+                        ArrayList<String> partidasEnDisco = new ArrayList();
+                        for (Partida partidas : partidasGuardadas) {
+                            partidasEnDisco.add(partidas.toString());
+                        }
+
+                        if (partidasEnDisco.contains(partida.toString())) {
+                            int indice = partidasEnDisco.indexOf(partida.toString());
+                            partidasGuardadas.remove(indice);
+                        }
+
                         partidasGuardadas.add(partida);
                     } else {
                         partidasGuardadas = new ArrayList();
