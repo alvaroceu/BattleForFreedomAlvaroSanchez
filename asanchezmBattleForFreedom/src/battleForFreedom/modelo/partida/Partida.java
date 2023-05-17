@@ -127,4 +127,15 @@ public class Partida extends Entidad {
     public Escenario getEscenario() {
         return this.escenarioPartida;
     }
+
+    /**
+     * Método toString de Partida, que recoge los elementos más importantes de
+     * la misma (nombres de jugadores y escenario)
+     *
+     * @return
+     */
+    @Override
+    public String toString() {
+        return this.jugador1 + " vs " + this.jugador2 + " | En: " + this.escenarioPartida;
+    }
 }

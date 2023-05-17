@@ -16,7 +16,7 @@ public class Juego {
 
     public static void comenzarJuego() {
 
-        ArrayList<Partida> partidasGuardadas = new ArrayList();
+        ArrayList<Partida> partidasGuardadas;
 
         int opcion;
         do {
@@ -67,7 +67,12 @@ public class Juego {
 
                 if (guardarOpcion == 1) {
                     partidasGuardadas = (ArrayList<Partida>) DataStore.leerPartida();
-                    partidasGuardadas.add(partida);
+                    if (partidasGuardadas != null) {
+                        partidasGuardadas.add(partida);
+                    } else {
+                        partidasGuardadas = new ArrayList();
+                        partidasGuardadas.add(partida);
+                    }
                     DataStore.escribirPartida(partidasGuardadas);
                 }
             }
@@ -107,7 +112,12 @@ public class Juego {
 
                 if (guardarOpcion == 1) {
                     partidasGuardadas = (ArrayList<Partida>) DataStore.leerPartida();
-                    partidasGuardadas.add(partida);
+                    if (partidasGuardadas != null) {
+                        partidasGuardadas.add(partida);
+                    } else {
+                        partidasGuardadas = new ArrayList();
+                        partidasGuardadas.add(partida);
+                    }
                     DataStore.escribirPartida(partidasGuardadas);
                 }
             }
