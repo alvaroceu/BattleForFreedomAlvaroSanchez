@@ -69,4 +69,24 @@ public class Coordenada extends Entidad {
     public String toString() {
         return "(" + x + "," + y + ")";
     }
+
+    /**
+     * Método equals de la clase Coordenada para poder determinar si dos
+     * coordenadas dadas son iguales o no.
+     *
+     * @param o Objeto recibido (Coordenada)
+     * @return true si son iguales
+     */
+    @Override
+    public boolean equals(Object o) {
+        boolean resultado = false;
+        if (o == null) {
+        }
+        if (o instanceof Coordenada) {
+            if ((((Coordenada) o).x == this.x) && (((Coordenada) o).y == this.y)) {
+                resultado = true;
+            }
+        }
+        return true;
+    }
 }
