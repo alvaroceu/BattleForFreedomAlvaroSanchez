@@ -212,7 +212,7 @@ public abstract class Unidad extends Entidad {
         int horizontal = Math.abs(this.posicion.getX() - nuevaPosicion.getX());
         int vertical = Math.abs(this.posicion.getY() - nuevaPosicion.getY());
 
-        if (this instanceof PlataformaMovilidadAmplificadaMitsubishiMK6) {
+        if ((this instanceof PlataformaMovilidadAmplificadaMitsubishiMK6) || (this instanceof Banshee)) {
             if (this.gastoEnergia > this.energiaMovimiento) {
                 throw new EnergiaMovimientoException(this.energiaMovimiento, this.gastoEnergia);
             } else {
