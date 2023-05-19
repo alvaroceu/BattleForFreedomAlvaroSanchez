@@ -43,7 +43,7 @@ public abstract class Unidad extends Entidad {
      * @param energiaDefensa Energia necesaria para recibir los ataques
      * @param energiaMovimiento Energia necesaria para mover la unidad
      * @param potenciaAtaque Cantidad que se resta de energia de ataque y
-     * defensa
+     * defensa.
      * @param puntosAnulado Puntos que recibe el jugador que elimina la unidad
      * @param gastoEnergia Energia gastada al moverse
      * @param raza Raza de la unidad (humano, navi)
