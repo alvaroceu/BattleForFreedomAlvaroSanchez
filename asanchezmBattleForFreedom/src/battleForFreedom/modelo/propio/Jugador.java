@@ -12,6 +12,7 @@ import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.tropas.seres.Ser;
 import battleForFreedom.modelo.tropas.unidades.Unidad;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -85,7 +86,7 @@ public class Jugador extends Entidad {
      */
     public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad, Jugador rival) throws AtaqueException, UnidadIncompletaException, FueraMapaException {
         int puntosActuales = this.puntosDisponibles;
-        int puntosGanados = unidad.atacar(coordenadaAtaque, escenario);
+        int puntosGanados = unidad.atacar(coordenadaAtaque, escenario, rival);
         int puntosFinales = puntosActuales + puntosGanados;
         this.setPuntosDisponibles(puntosFinales);
     }
@@ -107,6 +108,7 @@ public class Jugador extends Entidad {
      */
     public void moverUnidad(Escenario escenario, Unidad unidad, Jugador rival) throws EnergiaMovimientoException, CasillaOcupadaException, UnidadIncompletaException, FueraMapaException {
         unidad.mover(escenario);
+        rival.actualizarCentroMandos("El rival ha movido a la unidad " + unidad.tipoUnidad() + " [" + new Date() + "]");
     }
 
     /**

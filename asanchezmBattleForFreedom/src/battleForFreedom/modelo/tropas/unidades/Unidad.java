@@ -15,6 +15,7 @@ import battleForFreedom.modelo.tropas.seres.Ser;
 import battleForFreedom.modelo.tropas.unidades.humanas.PlataformaMovilidadAmplificadaMitsubishiMK6;
 import battleForFreedom.modelo.tropas.unidades.navi.Banshee;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -81,7 +82,7 @@ public abstract class Unidad extends Entidad {
      * @throws battleForFreedom.excepciones.UnidadIncompletaException
      *
      */
-    public int atacar(Coordenada ataque, Escenario escenario) throws AtaqueException, UnidadIncompletaException, FueraMapaException {
+    public int atacar(Coordenada ataque, Escenario escenario, Jugador rival) throws AtaqueException, UnidadIncompletaException, FueraMapaException {
 
         if (escenario.fueraMapa(ataque)) {
             throw new FueraMapaException();
@@ -101,13 +102,26 @@ public abstract class Unidad extends Entidad {
         this.energiaAtaque = this.energiaAtaque - this.potenciaAtaque;
 
         if (escenario.getUnidadEscenario(ataque) == null) {
+            this.propietario.actualizarCentroMandos("Se ha atacado a la posicion: " + ataque + "pero estaba vacia" + " [" + new Date() + "]");
+            rival.actualizarCentroMandos("El rival ha atacado a la posicion: " + ataque + "pero estaba vacia" + " [" + new Date() + "]");
             throw new AtaqueException("Se ha atacado la posicion " + ataque + " pero estaba vacia");
         } else {
             if (escenario.getUnidadEscenario(ataque).unidadAnulada) {
+                this.propietario.actualizarCentroMandos("Se ha atacado a la posicion: " + ataque + " pero la unidad " + escenario.getUnidadEscenario(ataque).tipoUnidad() + " ya estaba anulada" + " [" + new Date() + "]");
+                rival.actualizarCentroMandos("El rival ha atacado a la posicion: " + ataque + " pero la unidad " + escenario.getUnidadEscenario(ataque).tipoUnidad() + " ya estaba anulada" + " [" + new Date() + "]");
                 throw new AtaqueException("Se ha atacado la posicion " + ataque + " pero la unidad en dicha posicion ya estaba anulada");
             }
 
             puntosGanados = escenario.getUnidadEscenario(ataque).unidadRecibeAtaque(this.potenciaAtaque);
+            String fuegoAmigo;
+            if (this.propietario == escenario.getUnidadEscenario(ataque).propietario) {
+                fuegoAmigo = "Fuego Amigo";
+            } else {
+                fuegoAmigo = "No Fuego Amigo";
+            }
+
+            this.propietario.actualizarCentroMandos("Se ha atacado a la posicion: " + ataque + " donde habia un(a) " + escenario.getUnidadEscenario(ataque).tipoUnidad() + "(" + fuegoAmigo + ")" + " [" + new Date() + "]");
+            rival.actualizarCentroMandos("El rival ha atacado a la posicion: " + ataque + " donde habia un(a) " + escenario.getUnidadEscenario(ataque).tipoUnidad() + "(" + fuegoAmigo + ")" + " [" + new Date() + "]");
         }
 
         return puntosGanados;
@@ -240,6 +254,7 @@ public abstract class Unidad extends Entidad {
                 this.moverUnidadCasilla(escenario, nuevaPosicion);
             }
         }
+        this.propietario.actualizarCentroMandos("Se ha movido a la unidad " + this.tipoUnidad() + " a la posicion: " + this.posicion + " [" + new Date() + "]");
     }
 
     /**
