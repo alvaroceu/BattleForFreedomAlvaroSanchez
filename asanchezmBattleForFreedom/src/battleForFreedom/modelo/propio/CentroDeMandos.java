@@ -41,7 +41,7 @@ public class CentroDeMandos {
         this.equipoJugador.add("Puntos disponibles: " + jugador.getPuntos());
         this.equipoJugador.add("\nUnidades:\n");
         for (Unidad u : jugador.getEjercito()) {
-            this.equipoJugador.add(u.toString() + "\n");
+            this.equipoJugador.add(u.datosCompletos() + "\n");
         }
     }
 

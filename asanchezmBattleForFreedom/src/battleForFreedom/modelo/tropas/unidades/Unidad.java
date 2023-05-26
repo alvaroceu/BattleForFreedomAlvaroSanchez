@@ -401,7 +401,7 @@ public abstract class Unidad extends Entidad {
      */
     @Override
     public String toString() {
-        return "ATK:(" + this.energiaAtaque + ")" + "DEF:(" + this.energiaDefensa + ")" + "POS:" + this.posicion;
+        return "ATK:(" + this.energiaAtaque + ")" + " DEF:(" + this.energiaDefensa + ")" + " POS:" + this.posicion;
     }
 
     /**
@@ -410,5 +410,15 @@ public abstract class Unidad extends Entidad {
      * @return
      */
     public abstract String tipoUnidad();
+
+    /**
+     * Método similar a toString, pero que muestra toda la información de la
+     * unidad
+     *
+     * @return cadena con dicha información
+     */
+    public String datosCompletos() {
+        return this.toString() + " MOV:(" + this.energiaMovimiento + ")" + " POT.ATK:(" + this.potenciaAtaque + ")" + " OWNER:(" + this.propietario + ")";
+    }
 
 }
