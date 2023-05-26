@@ -30,6 +30,7 @@ public class Jugador extends Entidad {
      *
      * @param Id Nombre o identificación del jugador
      * @param escenario
+     * @param puntosDisponibles
      */
     public Jugador(String Id, Escenario escenario, int puntosDisponibles) {
         this.ID = Id;
@@ -65,14 +66,32 @@ public class Jugador extends Entidad {
         return this.puntosDisponibles;
     }
 
+    /**
+     * Método que permite añadir un mensaje a la lista de mensajes del centro de
+     * mandos.
+     *
+     * @param mensaje mensaje en cuestión
+     */
     public void actualizarCentroMandos(String mensaje) {
         this.centroDeMandos.actualizarMensajes(mensaje);
     }
 
+    /**
+     * Método que permite obtener la lista de unidades del centro de comandos
+     * que contiene toda la información de las mismas
+     *
+     * @return unidades en cuestión
+     */
     public ArrayList<String> getEquipoCentroMandos() {
         return this.centroDeMandos.getEquipoJugador(this);
     }
 
+    /**
+     * Método que permite obtener la lista de mensajes del centro de mandos que
+     * se van añadiendo al jugar
+     *
+     * @return mensajes en cuestión
+     */
     public ArrayList<String> getMensajesCentroMandos() {
         return this.centroDeMandos.getMensajes();
     }
@@ -91,6 +110,7 @@ public class Jugador extends Entidad {
      *
      * @throws battleForFreedom.excepciones.AtaqueException
      * @throws battleForFreedom.excepciones.UnidadIncompletaException
+     * @throws battleForFreedom.excepciones.FueraMapaException
      */
     public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad, Jugador rival) throws AtaqueException, UnidadIncompletaException, FueraMapaException {
         int puntosActuales = this.puntosDisponibles;
@@ -113,6 +133,7 @@ public class Jugador extends Entidad {
      * @throws battleForFreedom.excepciones.EnergiaMovimientoException
      * @throws battleForFreedom.excepciones.CasillaOcupadaException
      * @throws battleForFreedom.excepciones.UnidadIncompletaException
+     * @throws battleForFreedom.excepciones.FueraMapaException
      */
     public void moverUnidad(Escenario escenario, Unidad unidad, Jugador rival) throws EnergiaMovimientoException, CasillaOcupadaException, UnidadIncompletaException, FueraMapaException {
         unidad.mover(escenario);
