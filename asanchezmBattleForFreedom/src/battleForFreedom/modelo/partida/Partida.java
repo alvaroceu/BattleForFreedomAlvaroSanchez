@@ -119,6 +119,21 @@ public class Partida extends Entidad {
     }
 
     /**
+     * Permite obtener al jugador al que NO le toque actuar.
+     *
+     * @return jugador al que le toca jugar.
+     */
+    public Jugador getJugadorNoActual() {
+        Jugador jugadorActual;
+        if (this.turno % 2 == 0) {
+            jugadorActual = this.jugador2;
+        } else {
+            jugadorActual = this.jugador1;
+        }
+        return jugadorActual;
+    }
+
+    /**
      * Permite obtener el escenario en el que se desarrolla la partida para
      * poder pasarlo como parámetro a métodos de la clase jugador
      *
