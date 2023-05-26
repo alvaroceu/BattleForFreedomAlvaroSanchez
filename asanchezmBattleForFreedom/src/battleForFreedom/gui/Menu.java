@@ -306,11 +306,11 @@ public class Menu {
                         Unidad unidadBajoSer = null;
                         int indiceUnidad2 = 1;
                         for (Unidad unidad : partida.getJugadorActual().getEjercito()) {
+                            if (indiceUnidad2 == unidadEscogida) {
+                                unidadBajoSer = unidad;
+                            }
                             if (!unidad.unidadCompleta()) {
                                 indiceUnidad2++;
-                            }
-                            if (indiceUnidad2 == indiceUnidad) {
-                                unidadBajoSer = unidad;
                             }
                         }
 
@@ -413,11 +413,11 @@ public class Menu {
                         Unidad unidadBajoSer = null;
                         int indiceUnidad2 = 1;
                         for (Unidad unidad : partida.getJugadorActual().getEjercito()) {
+                            if (indiceUnidad2 == unidadEscogida) {
+                                unidadBajoSer = unidad;
+                            }
                             if (!unidad.unidadCompleta()) {
                                 indiceUnidad2++;
-                            }
-                            if (indiceUnidad2 == indiceUnidad) {
-                                unidadBajoSer = unidad;
                             }
                         }
 
