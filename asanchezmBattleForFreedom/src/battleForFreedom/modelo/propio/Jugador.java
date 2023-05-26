@@ -77,11 +77,12 @@ public class Jugador extends Entidad {
      * @param escenario Escenario de la partida actual
      * @param coordenadaAtaque Coordenada a la que se realizará el ataque
      * @param unidad Unidad que realiza el ataque
+     * @param rival Jugador rival del que atacará
      *
      * @throws battleForFreedom.excepciones.AtaqueException
      * @throws battleForFreedom.excepciones.UnidadIncompletaException
      */
-    public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad) throws AtaqueException, UnidadIncompletaException, FueraMapaException {
+    public void realizarAtaque(Escenario escenario, Coordenada coordenadaAtaque, Unidad unidad, Jugador rival) throws AtaqueException, UnidadIncompletaException, FueraMapaException {
         int puntosActuales = this.puntosDisponibles;
         int puntosGanados = unidad.atacar(coordenadaAtaque, escenario);
         int puntosFinales = puntosActuales + puntosGanados;
@@ -97,12 +98,13 @@ public class Jugador extends Entidad {
      *
      * @param escenario Escenario de la partida actual
      * @param unidad Unidad que se moverá
+     * @param rival Jugador rival del que moverá
      *
      * @throws battleForFreedom.excepciones.EnergiaMovimientoException
      * @throws battleForFreedom.excepciones.CasillaOcupadaException
      * @throws battleForFreedom.excepciones.UnidadIncompletaException
      */
-    public void moverUnidad(Escenario escenario, Unidad unidad) throws EnergiaMovimientoException, CasillaOcupadaException, UnidadIncompletaException, FueraMapaException {
+    public void moverUnidad(Escenario escenario, Unidad unidad, Jugador rival) throws EnergiaMovimientoException, CasillaOcupadaException, UnidadIncompletaException, FueraMapaException {
         unidad.mover(escenario);
     }
 

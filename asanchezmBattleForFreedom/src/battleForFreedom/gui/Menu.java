@@ -67,10 +67,10 @@ public class Menu {
 
             switch (opcion) {
                 case 1:
-                    menuAtaque(partida.getJugadorActual(), partida.getEscenario());
+                    menuAtaque(partida.getJugadorActual(), partida.getEscenario(), partida.getJugadorNoActual());
                     break;
                 case 2:
-                    menuMover(partida.getJugadorActual(), partida.getEscenario());
+                    menuMover(partida.getJugadorActual(), partida.getEscenario(), partida.getJugadorNoActual());
                     break;
                 case 3:
                     menuComprar(partida);
@@ -96,7 +96,7 @@ public class Menu {
         } while ((partida.getGanador() == null) && (!salirDeJuego));
     }
 
-    private static void menuAtaque(Jugador jugador, Escenario escenario) {
+    private static void menuAtaque(Jugador jugador, Escenario escenario, Jugador rival) {
 
         System.out.println("Has escogido atacar. ¿Que unidad va a atacar?\n\n");
 
@@ -137,7 +137,7 @@ public class Menu {
             Coordenada coordenada = new Coordenada(x, y);
 
             try {
-                jugador.realizarAtaque(escenario, coordenada, unidadAtacante);
+                jugador.realizarAtaque(escenario, coordenada, unidadAtacante, rival);
                 repetir = false;
             } catch (AtaqueException ex) {
                 System.out.println(ex);
@@ -155,7 +155,7 @@ public class Menu {
 
     }
 
-    private static void menuMover(Jugador jugador, Escenario escenario) {
+    private static void menuMover(Jugador jugador, Escenario escenario, Jugador rival) {
 
         System.out.println("Has escogido mover. ¿Que unidad se movera?\n\n");
 
@@ -190,7 +190,7 @@ public class Menu {
         Boolean repetir = false;
         do {
             try {
-                jugador.moverUnidad(escenario, unidadMovida);
+                jugador.moverUnidad(escenario, unidadMovida, rival);
                 repetir = false;
             } catch (EnergiaMovimientoException ex) {
                 if (ex.quedaEnergia()) {
