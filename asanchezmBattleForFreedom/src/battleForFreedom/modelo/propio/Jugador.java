@@ -34,6 +34,7 @@ public class Jugador extends Entidad {
         this.ID = Id;
         this.puntosDisponibles = puntosDisponibles;
         this.ejercito = new ArrayList();
+        this.centroDeMandos = new ArrayList();
     }
 
     /**
