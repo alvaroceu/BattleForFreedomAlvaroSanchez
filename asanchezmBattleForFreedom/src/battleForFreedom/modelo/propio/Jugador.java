@@ -22,6 +22,7 @@ public class Jugador extends Entidad {
     private String ID;
     private int puntosDisponibles;
     private ArrayList<Unidad> ejercito;
+    private ArrayList<String> centroDeMandos;
 
     /**
      * Constructor de objetos de clase Jugador
@@ -60,6 +61,10 @@ public class Jugador extends Entidad {
      */
     public int getPuntos() {
         return this.puntosDisponibles;
+    }
+
+    public void actualizarCentroMandos(String mensaje) {
+        this.centroDeMandos.add(mensaje);
     }
 
     /**
