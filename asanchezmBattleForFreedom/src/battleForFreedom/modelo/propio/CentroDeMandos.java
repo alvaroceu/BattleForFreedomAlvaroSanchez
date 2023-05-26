@@ -1,5 +1,6 @@
 package battleForFreedom.modelo.propio;
 
+import battleForFreedom.modelo.Entidad;
 import battleForFreedom.modelo.tropas.unidades.Unidad;
 import java.util.ArrayList;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Alvaro
  */
-public class CentroDeMandos {
+public class CentroDeMandos extends Entidad {
 
     private ArrayList<String> equipoJugador;
     private ArrayList<String> mensajesPartida;

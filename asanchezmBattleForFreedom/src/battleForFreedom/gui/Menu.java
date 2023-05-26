@@ -93,7 +93,7 @@ public class Menu {
                     if ((opcion < 1) || (opcion > 3)) {
                         System.out.println("La opcion escogida no existe, repite\n");
                     }
-                } while ((opcion < 1) || (opcion > 3));
+                } while ((eleccion < 1) || (eleccion > 3));
 
                 if (eleccion == 1) {
                     System.out.println(partida.getJugadorActual().getEquipoCentroMandos());
