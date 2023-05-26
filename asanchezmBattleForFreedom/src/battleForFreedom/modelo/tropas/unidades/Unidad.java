@@ -401,7 +401,7 @@ public abstract class Unidad extends Entidad {
      */
     @Override
     public String toString() {
-        return "ATK:(" + this.energiaAtaque + ")" + " DEF:(" + this.energiaDefensa + ")" + " POS:" + this.posicion;
+        return " ATK:(" + this.energiaAtaque + ")" + " DEF:(" + this.energiaDefensa + ")" + " POS:" + this.posicion;
     }
 
     /**
