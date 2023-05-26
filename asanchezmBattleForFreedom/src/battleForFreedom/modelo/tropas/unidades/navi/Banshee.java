@@ -45,4 +45,13 @@ public class Banshee extends UnidadNavi {
     public Coordenada establecerCoordenadaMovimiento() {
         return null;
     }
+
+    /**
+     * Método similar a toString que tan solo devuelve el nombre de la unidad
+     *
+     * @return
+     */
+    public String tipoUnidad() {
+        return "Banshee";
+    }
 }

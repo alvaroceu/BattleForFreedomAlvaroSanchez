@@ -44,4 +44,13 @@ public class TitanothereCabezamartillo extends UnidadNavi {
     public Coordenada establecerCoordenadaMovimiento() {
         return super.generarCoordenadaMovimiento(2);
     }
+
+    /**
+     * Método similar a toString que tan solo devuelve el nombre de la unidad
+     *
+     * @return
+     */
+    public String tipoUnidad() {
+        return "Titanothere Cabezamartillo";
+    }
 }

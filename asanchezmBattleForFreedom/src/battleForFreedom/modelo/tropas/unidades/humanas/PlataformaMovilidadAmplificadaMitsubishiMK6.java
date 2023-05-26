@@ -45,4 +45,13 @@ public class PlataformaMovilidadAmplificadaMitsubishiMK6 extends UnidadRDA {
     public Coordenada establecerCoordenadaMovimiento() {
         return super.generarCoordenadaMovimiento(2);
     }
+
+    /**
+     * Método similar a toString que tan solo devuelve el nombre de la unidad
+     *
+     * @return
+     */
+    public String tipoUnidad() {
+        return "Plataforma de Movilidad Amplificada Mitsubishi MK-6";
+    }
 }

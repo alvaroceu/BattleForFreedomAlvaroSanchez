@@ -44,4 +44,13 @@ public class AerospatialeSA2Samson extends UnidadRDA {
     public Coordenada establecerCoordenadaMovimiento() {
         return super.generarCoordenadaMovimiento(10);
     }
+
+    /**
+     * Método similar a toString que tan solo devuelve el nombre de la unidad
+     *
+     * @return
+     */
+    public String tipoUnidad() {
+        return "Aerospatiale SA-2 Samson";
+    }
 }
