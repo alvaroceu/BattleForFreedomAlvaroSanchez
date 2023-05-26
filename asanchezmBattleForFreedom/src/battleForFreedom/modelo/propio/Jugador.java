@@ -23,7 +23,7 @@ public class Jugador extends Entidad {
     private String ID;
     private int puntosDisponibles;
     private ArrayList<Unidad> ejercito;
-    private ArrayList<String> centroDeMandos;
+    private CentroDeMandos centroDeMandos;
 
     /**
      * Constructor de objetos de clase Jugador
@@ -35,7 +35,7 @@ public class Jugador extends Entidad {
         this.ID = Id;
         this.puntosDisponibles = puntosDisponibles;
         this.ejercito = new ArrayList();
-        this.centroDeMandos = new ArrayList();
+        this.centroDeMandos = new CentroDeMandos(this);
     }
 
     /**
@@ -66,7 +66,7 @@ public class Jugador extends Entidad {
     }
 
     public void actualizarCentroMandos(String mensaje) {
-        this.centroDeMandos.add(mensaje);
+        this.centroDeMandos.actualizarMensajes(mensaje);
     }
 
     /**
