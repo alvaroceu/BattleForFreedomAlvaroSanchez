@@ -10,6 +10,7 @@ import battleForFreedom.modelo.Entidad;
 import battleForFreedom.modelo.escenarios.Escenario;
 import battleForFreedom.modelo.funcionamiento.Coordenada;
 import battleForFreedom.modelo.funcionamiento.Raza;
+import battleForFreedom.modelo.propio.Jugador;
 import battleForFreedom.modelo.tropas.seres.Ser;
 import battleForFreedom.modelo.tropas.unidades.humanas.PlataformaMovilidadAmplificadaMitsubishiMK6;
 import battleForFreedom.modelo.tropas.unidades.navi.Banshee;
@@ -34,6 +35,7 @@ public abstract class Unidad extends Entidad {
     private Boolean unidadAnulada;
     private int gastoEnergia;
     private Raza raza;
+    private Jugador propietario;
 
     /**
      * Constructor de objetos de la clase Unidad
@@ -49,7 +51,7 @@ public abstract class Unidad extends Entidad {
      * @param raza Raza de la unidad (humano, navi)
      *
      */
-    public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, int gastoEnergia, Raza raza, int numeroSeres) {
+    public Unidad(int costeUnidad, int energiaAtaque, int energiaDefensa, int energiaMovimiento, int potenciaAtaque, int puntosAnulado, int gastoEnergia, Raza raza, int numeroSeres, Jugador jugador) {
         this.costeUnidad = costeUnidad;
         this.energiaAtaque = energiaAtaque;
         this.energiaDefensa = energiaDefensa;
@@ -62,6 +64,7 @@ public abstract class Unidad extends Entidad {
         this.unidadAnulada = false;
         this.raza = raza;
         this.numeroSeres = numeroSeres;
+        this.propietario = jugador;
     }
 
     /**

@@ -244,11 +244,11 @@ public class Menu {
 
                     try {
                         if (unidadAComprar == 1) {
-                            partida.getJugadorActual().comprarUnidad(new AT99Escorpion(), partida.getEscenario());
+                            partida.getJugadorActual().comprarUnidad(new AT99Escorpion(partida.getJugadorActual()), partida.getEscenario());
                         } else if (unidadAComprar == 2) {
-                            partida.getJugadorActual().comprarUnidad(new AerospatialeSA2Samson(), partida.getEscenario());
+                            partida.getJugadorActual().comprarUnidad(new AerospatialeSA2Samson(partida.getJugadorActual()), partida.getEscenario());
                         } else if (unidadAComprar == 3) {
-                            partida.getJugadorActual().comprarUnidad(new PlataformaMovilidadAmplificadaMitsubishiMK6(), partida.getEscenario());
+                            partida.getJugadorActual().comprarUnidad(new PlataformaMovilidadAmplificadaMitsubishiMK6(partida.getJugadorActual()), partida.getEscenario());
                         }
                     } catch (PuntosInsuficientesException ex) {
                         System.out.println("No tienes dinero suficiente para comprar esa unidad");
@@ -352,11 +352,11 @@ public class Menu {
 
                     try {
                         if (unidadAComprar == 1) {
-                            partida.getJugadorActual().comprarUnidad(new Banshee(), partida.getEscenario());
+                            partida.getJugadorActual().comprarUnidad(new Banshee(partida.getJugadorActual()), partida.getEscenario());
                         } else if (unidadAComprar == 2) {
-                            partida.getJugadorActual().comprarUnidad(new Thanator(), partida.getEscenario());
+                            partida.getJugadorActual().comprarUnidad(new Thanator(partida.getJugadorActual()), partida.getEscenario());
                         } else if (unidadAComprar == 3) {
-                            partida.getJugadorActual().comprarUnidad(new TitanothereCabezamartillo(), partida.getEscenario());
+                            partida.getJugadorActual().comprarUnidad(new TitanothereCabezamartillo(partida.getJugadorActual()), partida.getEscenario());
                         }
                     } catch (PuntosInsuficientesException ex) {
                         System.out.println("No tienes dinero suficiente para comprar esa unidad");

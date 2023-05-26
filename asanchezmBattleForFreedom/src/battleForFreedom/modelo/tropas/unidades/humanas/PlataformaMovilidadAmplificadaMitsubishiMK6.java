@@ -1,6 +1,7 @@
 package battleForFreedom.modelo.tropas.unidades.humanas;
 
 import battleForFreedom.modelo.funcionamiento.Coordenada;
+import battleForFreedom.modelo.propio.Jugador;
 import battleForFreedom.modelo.tropas.unidades.UnidadRDA;
 
 /**
@@ -9,8 +10,8 @@ import battleForFreedom.modelo.tropas.unidades.UnidadRDA;
  */
 public class PlataformaMovilidadAmplificadaMitsubishiMK6 extends UnidadRDA {
 
-    public PlataformaMovilidadAmplificadaMitsubishiMK6() {
-        super(500, 1000, 0, 500, 20, 250, 1, 25);
+    public PlataformaMovilidadAmplificadaMitsubishiMK6(Jugador jugador) {
+        super(500, 1000, 0, 500, 20, 250, 1, 25, jugador);
     }
 
     /**

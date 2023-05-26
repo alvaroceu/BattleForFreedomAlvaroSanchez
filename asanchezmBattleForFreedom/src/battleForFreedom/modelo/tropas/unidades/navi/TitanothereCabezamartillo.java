@@ -1,6 +1,7 @@
 package battleForFreedom.modelo.tropas.unidades.navi;
 
 import battleForFreedom.modelo.funcionamiento.Coordenada;
+import battleForFreedom.modelo.propio.Jugador;
 import battleForFreedom.modelo.tropas.unidades.UnidadNavi;
 
 /**
@@ -9,8 +10,8 @@ import battleForFreedom.modelo.tropas.unidades.UnidadNavi;
  */
 public class TitanothereCabezamartillo extends UnidadNavi {
 
-    public TitanothereCabezamartillo() {
-        super(1000, 11000, 11000, 4500, 300, 250, 1, 25);
+    public TitanothereCabezamartillo(Jugador jugador) {
+        super(1000, 11000, 11000, 4500, 300, 250, 1, 25, jugador);
     }
 
     /**

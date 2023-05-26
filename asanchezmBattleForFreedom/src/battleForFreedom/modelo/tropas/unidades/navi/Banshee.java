@@ -1,6 +1,7 @@
 package battleForFreedom.modelo.tropas.unidades.navi;
 
 import battleForFreedom.modelo.funcionamiento.Coordenada;
+import battleForFreedom.modelo.propio.Jugador;
 import battleForFreedom.modelo.tropas.unidades.UnidadNavi;
 
 /**
@@ -9,8 +10,8 @@ import battleForFreedom.modelo.tropas.unidades.UnidadNavi;
  */
 public class Banshee extends UnidadNavi {
 
-    public Banshee() {
-        super(2000, 8000, 3500, 3500, 300, 1000, 2, 10);
+    public Banshee(Jugador jugador) {
+        super(2000, 8000, 3500, 3500, 300, 1000, 2, 10, jugador);
     }
 
     /**

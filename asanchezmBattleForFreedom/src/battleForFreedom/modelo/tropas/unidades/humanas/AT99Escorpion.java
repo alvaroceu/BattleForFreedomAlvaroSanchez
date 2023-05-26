@@ -1,6 +1,7 @@
 package battleForFreedom.modelo.tropas.unidades.humanas;
 
 import battleForFreedom.modelo.funcionamiento.Coordenada;
+import battleForFreedom.modelo.propio.Jugador;
 import battleForFreedom.modelo.tropas.unidades.UnidadRDA;
 
 /**
@@ -9,8 +10,8 @@ import battleForFreedom.modelo.tropas.unidades.UnidadRDA;
  */
 public class AT99Escorpion extends UnidadRDA {
 
-    public AT99Escorpion() {
-        super(15000, 7500, 7500, 5000, 500, 10000, 4, 100);
+    public AT99Escorpion(Jugador jugador) {
+        super(15000, 7500, 7500, 5000, 500, 10000, 4, 100, jugador);
     }
 
     /**

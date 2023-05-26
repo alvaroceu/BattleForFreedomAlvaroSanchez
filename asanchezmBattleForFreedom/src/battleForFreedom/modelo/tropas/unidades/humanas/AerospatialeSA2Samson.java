@@ -1,6 +1,7 @@
 package battleForFreedom.modelo.tropas.unidades.humanas;
 
 import battleForFreedom.modelo.funcionamiento.Coordenada;
+import battleForFreedom.modelo.propio.Jugador;
 import battleForFreedom.modelo.tropas.unidades.UnidadRDA;
 
 /**
@@ -9,8 +10,8 @@ import battleForFreedom.modelo.tropas.unidades.UnidadRDA;
  */
 public class AerospatialeSA2Samson extends UnidadRDA {
 
-    public AerospatialeSA2Samson() {
-        super(2500, 1000, 1000, 500, 80, 1500, 2, 50);
+    public AerospatialeSA2Samson(Jugador jugador) {
+        super(2500, 1000, 1000, 500, 80, 1500, 2, 50, jugador);
     }
 
     /**

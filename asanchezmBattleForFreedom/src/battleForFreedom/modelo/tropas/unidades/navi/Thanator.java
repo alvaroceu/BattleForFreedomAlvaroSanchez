@@ -1,6 +1,7 @@
 package battleForFreedom.modelo.tropas.unidades.navi;
 
 import battleForFreedom.modelo.funcionamiento.Coordenada;
+import battleForFreedom.modelo.propio.Jugador;
 import battleForFreedom.modelo.tropas.unidades.UnidadNavi;
 
 /**
@@ -9,8 +10,8 @@ import battleForFreedom.modelo.tropas.unidades.UnidadNavi;
  */
 public class Thanator extends UnidadNavi {
 
-    public Thanator() {
-        super(8000, 9000, 9000, 6000, 600, 4000, 3, 10);
+    public Thanator(Jugador jugador) {
+        super(8000, 9000, 9000, 6000, 600, 4000, 3, 10, jugador);
     }
 
     /**
