@@ -28,7 +28,7 @@ public class Jugador extends Entidad {
     /**
      * Constructor de objetos de clase Jugador
      *
-     * @param Id Nombre o identificación del jugador
+     * @param Id Nombre o identificación del jugador.
      * @param escenario
      * @param puntosDisponibles
      */
