@@ -35,7 +35,7 @@ public class Jugador extends Entidad {
         this.ID = Id;
         this.puntosDisponibles = puntosDisponibles;
         this.ejercito = new ArrayList();
-        this.centroDeMandos = new CentroDeMandos(this);
+        this.centroDeMandos = new CentroDeMandos();
     }
 
     /**
@@ -67,6 +67,14 @@ public class Jugador extends Entidad {
 
     public void actualizarCentroMandos(String mensaje) {
         this.centroDeMandos.actualizarMensajes(mensaje);
+    }
+
+    public ArrayList<String> getEquipoCentroMandos() {
+        return this.centroDeMandos.getEquipoJugador(this);
+    }
+
+    public ArrayList<String> getMensajesCentroMandos() {
+        return this.centroDeMandos.getMensajes();
     }
 
     /**

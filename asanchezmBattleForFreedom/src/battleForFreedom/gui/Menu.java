@@ -80,6 +80,30 @@ public class Menu {
                     break;
             }
 
+            int eleccion = 3;
+            do {
+
+                System.out.println("\nQuieres ver el centro de mandos antes de pasar turno?\n\n"
+                        + "1-Si, ver mi equipo\n"
+                        + "2-Si, ver los mensajes de la partida\n"
+                        + "3-No\n");
+
+                do {
+                    eleccion = leerEntero("Escoje tu opcion: ");
+                    if ((opcion < 1) || (opcion > 3)) {
+                        System.out.println("La opcion escogida no existe, repite\n");
+                    }
+                } while ((opcion < 1) || (opcion > 3));
+
+                if (eleccion == 1) {
+                    System.out.println(partida.getJugadorActual().getEquipoCentroMandos());
+                }
+                if (eleccion == 2) {
+                    System.out.println(partida.getJugadorActual().getMensajesCentroMandos());
+                }
+
+            } while (eleccion != 3);
+
             if (jugadoresPreparados == false) {
                 if ((partida.getJugadorHumano().getEjercito().isEmpty()) || (partida.getJugadorNavi().getEjercito().isEmpty())) {
                 } else {
