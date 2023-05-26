@@ -11,7 +11,7 @@ public class JardinesColgantes extends Escenario {
      * iniciales a 20000, y tiene una dimensiond e 200x200.
      */
     public JardinesColgantes() {
-        super(20000, 199);
+        super(20000, 200);
     }
 
     /**

@@ -11,7 +11,7 @@ public class ArbolDeLasAlmas extends Escenario {
      * iniciales a 5000, y tiene una dimensiond e 100x100.
      */
     public ArbolDeLasAlmas() {
-        super(5000, 99);
+        super(5000, 100);
     }
 
     /**

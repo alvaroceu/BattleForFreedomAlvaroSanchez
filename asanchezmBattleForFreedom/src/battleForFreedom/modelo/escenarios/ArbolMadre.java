@@ -11,7 +11,7 @@ public class ArbolMadre extends Escenario {
      * 45000, y tiene una dimensiond e 300x300.
      */
     public ArbolMadre() {
-        super(45000, 299);
+        super(45000, 300);
     }
 
     /**
