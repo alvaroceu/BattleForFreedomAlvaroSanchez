@@ -203,11 +203,11 @@ public class Menu {
         Unidad unidadMovida = null;
         int indiceUnidad2 = 1;
         for (Unidad unidad : jugador.getEjercito()) {
+            if (indiceUnidad2 == unidadEscogida) {
+                unidadMovida = unidad;
+            }
             if (unidad.unidadCompleta()) {
                 indiceUnidad2++;
-            }
-            if (indiceUnidad2 == indiceUnidad) {
-                unidadMovida = unidad;
             }
         }
 
