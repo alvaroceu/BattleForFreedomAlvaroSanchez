@@ -389,4 +389,11 @@ public abstract class Unidad extends Entidad {
         return "ATK:(" + this.energiaAtaque + ")" + "DEF:(" + this.energiaDefensa + ")" + "POS:" + this.posicion;
     }
 
+    /**
+     * Permitirá recibir el tipo de unidad
+     *
+     * @return
+     */
+    public abstract String tipoUnidad();
+
 }
